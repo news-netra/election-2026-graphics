@@ -1,10 +1,10 @@
-# Bangladesh Election 2026 — interactive graphics
+# How Women Voted: Evidence from Bangladesh’s 2026 Polling-Centre Results
 
 An interactive analysis built from the official Election Commission results.
 
 **Live:** https://news-netra.github.io/election-2026-graphics/
 
-[`women-vote/`](women-vote/) — **Women voted more for Jamaat**: how men and women voted differently,
+[`women-vote/`](women-vote/) — how men and women voted differently,
 using 11,096 single-sex polling centres, plus a same-building control to rule out geography.
 
 ## The finding, in short
