@@ -1,13 +1,11 @@
 # Bangladesh Election 2026 — interactive graphics
 
-Two self-contained interactive pieces built from the official Election Commission results.
+An interactive analysis built from the official Election Commission results.
 
 **Live:** https://news-netra.github.io/election-2026-graphics/
 
-| | |
-|---|---|
-| [`women-vote/`](women-vote/) | **Women voted more for Jamaat** — how men and women voted differently, using 11,096 single-sex polling centres, plus a same-building control to rule out geography. |
-| [`alliance-map/`](alliance-map/) | **The alliance map** — the leading bloc in each of 5,375 unions, city-corporation wards and municipalities, and the winner of all 300 parliamentary seats. |
+[`women-vote/`](women-vote/) — **Women voted more for Jamaat**: how men and women voted differently,
+using 11,096 single-sex polling centres, plus a same-building control to rule out geography.
 
 ## The finding, in short
 
@@ -24,7 +22,7 @@ that region too — the gap is four times larger in seats Jamaat won than lost (
 
 ## Running locally
 
-Both pages fetch their data, so they need to be served over HTTP (not opened as `file://`):
+The page fetches its data, so it needs to be served over HTTP (not opened as `file://`):
 
 ```bash
 python3 -m http.server 8000
