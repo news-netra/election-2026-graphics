@@ -288,6 +288,12 @@
       more than men did.</span> Whatever is happening, it is specific to Jamaat rather than general to
       religious parties.
     </p>
+    <p class="lede">
+      This holds up under a harder test. The next section splits the country into villages, small towns and
+      big cities, and Islami Andolan loses ground among women in all three, by almost the same amount each
+      time. A national average can hide a lot; three separate averages pointing the same way can hide much
+      less.
+    </p>
     <figure>
       <figcaption>Every party: share among men, then share among women</figcaption>
       <div class="sub">Each line runs from the men's share to the women's share. Orange means the party gained among women.</div>
@@ -336,6 +342,46 @@
       <div class="note">Jamaat's own share moves by +2.4, +2.4 and −0.5 points. The figures under the bars
         also account for what the BNP did, which is why they are slightly larger.</div>
     </figure>
+
+    <h3>What every party did, in each kind of place</h3>
+    <p class="lede">
+      Looking at Jamaat alone leaves an obvious question unanswered: when women in the big cities moved away
+      from Jamaat, where did those votes go? And is the city pattern something general about how women vote
+      in cities, or is it specific to these two parties? The chart below runs the same three-way split for
+      every party of any size.
+    </p>
+    <p class="lede">
+      Two things stand out. The first is that <span class="hl">the city reversal is a straight swap between
+      the two leading parties</span>. In big cities Jamaat is down 0.5 points among women and the BNP is up
+      1.2. Everyone else barely moves: the NCP is flat at +0.1, and the smaller parties drift slightly down.
+      Outside the cities the same swap runs the other way, with Jamaat up about 2.4 points and the BNP down
+      0.4 in villages and 0.8 in small towns. This is not women in cities behaving differently in general.
+      It is the same two parties trading the same votes in opposite directions.
+    </p>
+    <p class="lede">
+      The second is <strong>Islami Andolan</strong>. It loses ground among women in all three kinds of
+      place, and by almost exactly the same amount each time: 0.4 points in villages, 0.3 in small towns,
+      0.4 in big cities. That matters for the argument in the previous section. The idea that women simply
+      favour religious parties does not just fail as a national average — it fails separately in villages,
+      in towns and in cities, which is a much harder result to explain away.
+    </p>
+    <figure>
+      <figcaption>How each party did with women, by kind of place</figcaption>
+      <div class="sub">The women's share minus the men's share, in percentage points. Bars to the right mean the party did better with women.</div>
+      <div class="legend" id="leg12"></div>
+      <div id="c12"></div>
+      <div class="note">Hover any bar for the underlying shares. Parties below about one percent of the
+        national vote are not shown.</div>
+    </figure>
+    <div class="aside">
+      <div class="t">One caveat on reading these together</div>
+      <p>The five parties shown here account for a little more of women's ballots than of men's — about 1.3
+      points more in villages and 1.2 in small towns, though only 0.03 in big cities. In other words, outside
+      the cities women's votes concentrate slightly more on the established parties, and slightly less on the
+      long tail of small parties and independents.</p>
+      <p>That is why a party can gain a few tenths of a point among women without anyone having switched to
+      it. It is also why the next section measures Jamaat <b>against the BNP</b> rather than on its own.</p>
+    </div>
   </section>
 
   <section>
@@ -798,6 +844,50 @@ function c3(){
   h.appendChild(s);
 }
 
+/* ---------- 12. every party, by settlement type ---------- */
+const PLACE=[['union','Villages','#7aa398'],['municipality','Small towns','#4e7f8c'],
+             ['city_corporation','Big cities','#274b63']];
+function c12(){
+  const h=document.getElementById('c12');h.innerHTML='';
+  const lg=document.getElementById('leg12');
+  if(lg){lg.innerHTML='';PLACE.forEach(p=>{
+    const d=document.createElement('div');d.className='i';
+    d.innerHTML=`<span class="sw" style="background:${p[2]}"></span>${p[1]}`;lg.appendChild(d);});}
+  const rows=D.geo_parties.rows,barH=20,gapB=3,gapG=26,mL=150,mR=54,mT=14,mB=42,W=860;
+  const groupH=PLACE.length*(barH+gapB)+gapG;
+  const H=mT+mB+rows.length*groupH;
+  const vals=rows.flatMap(r=>PLACE.map(p=>r.by[p[0]].gap));
+  const lo=Math.min(-0.6,Math.min(...vals)-0.5),hi=Math.max(...vals)+0.6;
+  const s=el('svg',{viewBox:`0 0 ${W} ${H}`}),pw=W-mL-mR,x=v=>mL+(v-lo)/(hi-lo)*pw;
+  for(let g=Math.ceil(lo);g<=Math.floor(hi);g++){
+    s.appendChild(el('line',{x1:x(g),x2:x(g),y1:mT,y2:H-mB,class:'gl'}));
+    s.appendChild(el('text',{x:x(g),y:H-mB+17,'text-anchor':'middle',class:'ax'})).textContent=sgni(g);
+  }
+  s.appendChild(el('line',{x1:x(0),x2:x(0),y1:mT,y2:H-mB,stroke:cv('--ink'),'stroke-width':1.5}));
+  s.appendChild(el('text',{x:(x(lo)+x(0))/2,y:H-mB+34,'text-anchor':'middle',class:'ax',
+    style:'font-size:11px'})).textContent='← did worse with women';
+  s.appendChild(el('text',{x:(x(0)+x(hi))/2,y:H-mB+34,'text-anchor':'middle',class:'ax',
+    style:'font-size:11px'})).textContent='did better with women →';
+  rows.forEach((r,i)=>{
+    const gy=mT+i*groupH;
+    s.appendChild(el('text',{x:mL-16,y:gy+groupH/2-4,'text-anchor':'end',class:'cat',
+      style:'font-size:13.5px;font-weight:700'})).textContent=r.p;
+    PLACE.forEach((p,j)=>{
+      const d=r.by[p[0]],v=d.gap,by=gy+j*(barH+gapB),pos=v>=0;
+      const bw=Math.abs(x(v)-x(0));
+      const rc=el('rect',{x:pos?x(0):x(0)-bw,y:by,width:Math.max(bw,1),height:barH,fill:p[2]});
+      rc.style.cursor='pointer';
+      rc.addEventListener('mousemove',e=>show(`<b>${r.p} — ${p[1]}</b><br>`+
+        `men ${d.m.toFixed(2)}% · women ${d.f.toFixed(2)}%<br>`+
+        `<b>${sgn(v)} points</b> with women`,e));
+      rc.addEventListener('mouseleave',hide);s.appendChild(rc);
+      s.appendChild(el('text',{x:pos?x(v)+7:x(v)-7,y:by+barH/2+4,'text-anchor':pos?'start':'end',
+        class:'val',style:'font-size:11.5px'})).textContent=(Math.abs(v)<0.05?'0.0':sgn(v));
+    });
+  });
+  h.appendChild(s);
+}
+
 /* ---------- 4. same-building test by settlement type ---------- */
 function c4(){
   const h=document.getElementById('c4');h.innerHTML='';
@@ -1069,7 +1159,7 @@ function fillText(){
   set('s-bothj',P.both.Jamaat); set('s-offj',P.official.Jamaat);
 }
 
-const drawAll=()=>{c0();c1();c2();c3();c4();c5();c6();c7();c8();c9();c10();c11();};
+const drawAll=()=>{c0();c1();c2();c3();c12();c4();c5();c6();c7();c8();c9();c10();c11();};
 Promise.all([
   fetch('deck.json').then(r=>r.json()),
   fetch('chart_data.json').then(r=>r.json()),
