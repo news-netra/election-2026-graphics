@@ -52,8 +52,9 @@ a seat are not independent.
   sorting seats by who won them.
 - **Turnout at women's centres was 5.4 points lower** than at men's, and the shortfall widens from village
   (4.1) to small town (5.9) to big city (7.3). So this is choice, not turnout.
-- On women's votes alone Jamaat leads 57 of the 226 seats against 46 on men's. But the *same centres counted
-  together* give it 54, while the official result gave it 47 — so read the men-to-women gap, not the levels.
+- On women's votes alone Jamaat leads 55 of the 226 seats against 44 on men's, a gain of 11. But the *same
+  centres counted together* give it 52, while the official result gave it 47 — so read the 11-seat distance,
+  not the levels.
 
 ## Methodology
 
@@ -75,6 +76,18 @@ constituencies** with replacement, not individual centres. Centres inside a seat
 and local conditions, so treating them as independent would understate uncertainty considerably. Where an
 interval crosses zero the result is reported as not distinguishable from no difference rather than as a
 finding — this is why the big-cities figure for Jamaat's own share is not claimed as a fall.
+
+**Seat leads.** A seat's lead at single-sex centres is whichever of the eight recorded symbols takes the
+most votes there, so a third party can lead a row just as it can win a seat officially — one does in 11 of
+the 226 seats, mostly the NCP. An earlier version compared only Jamaat against the BNP and forced every seat
+to one of the two; that understated third parties by 11–13 seats per row but changed neither the
+men-to-women gain (+11 either way) nor the flip counts (15 and 4 either way).
+
+The official row still shows more non-BNP, non-Jamaat winners (23) than the single-sex rows, for two
+reasons. Sixteen of those 23 took a symbol the single-sex source does not record at all, so they are
+undetectable here under any rule; the other seven are recorded and do appear. And the single-sex centres are
+a different, more urban electorate than the whole seat, so the two need not agree — the all-party rule
+matches the official winner in 192 of 226 seats (85%).
 
 **Coalitions.** Membership comes from the official results file. The Jamaat-led coalition is Jamaat, the NCP
 and the rickshaw and wall-clock symbols; the BNP-led coalition is the BNP and the hat symbol. Islami Andolan
