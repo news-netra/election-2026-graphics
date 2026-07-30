@@ -39,17 +39,17 @@
   p.lede strong{color:var(--ink);font-weight:700;}
   .hl{background:linear-gradient(transparent 60%,rgba(194,65,12,.20) 60%);font-weight:700;color:var(--ink);}
 
-  .scopebox{background:#fffaf6;border:1px solid #f0d9c8;border-left:3px solid var(--jam);
+  .scopebox{background:#fffaf6;
             padding:16px 18px;margin-top:22px;font-size:14.5px;color:var(--ink2);}
   .scopebox b{color:var(--ink);}
 
   .tiles{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;}
-  .tile{flex:1 1 160px;background:var(--surface);border:1px solid var(--line);padding:16px 18px;box-shadow:var(--shadow);}
+  .tile{flex:1 1 160px;background:var(--surface);padding:16px 18px;box-shadow:var(--shadow);}
   .tile .n{font-size:31px;font-weight:800;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
   .tile .n small{font-size:16px;}
   .tile .l{font-size:12px;color:var(--ink2);margin-top:7px;line-height:1.4;}
 
-  figure{background:var(--surface);border:1px solid var(--line);padding:20px 20px 16px;margin-top:22px;box-shadow:var(--shadow);}
+  figure{background:var(--surface);padding:20px 20px 16px;margin-top:22px;box-shadow:var(--shadow);}
   figcaption{font-size:14.5px;font-weight:700;margin-bottom:2px;}
   .sub{font-size:12.5px;color:var(--ink2);margin-bottom:14px;}
   .note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.5;}
@@ -70,10 +70,10 @@
   table.tbl td.n{text-align:right;}
 
   ul.keys{list-style:none;display:grid;gap:12px;margin-top:8px;}
-  ul.keys li{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--jam);
+  ul.keys li{background:var(--surface);
              padding:15px 17px;font-size:15.5px;color:var(--ink2);}
   ul.keys li b{color:var(--ink);}
-  ul.keys li.caution{border-left-color:var(--neg);}
+  ul.keys li.caution b{color:var(--neg);}
 
   footer{padding:34px 0 70px;border-top:1px solid var(--grid);color:var(--muted);font-size:12.5px;line-height:1.6;}
   footer code{background:rgba(60,55,50,.07);padding:1px 5px;font-size:11.5px;}
@@ -101,14 +101,15 @@
     <div class="step">1 · What this covers</div>
     <h2>226 seats, not the whole country</h2>
     <p class="lede">
-      Most polling centres are mixed, so a man's vote cannot be told from a woman's. Single-sex centres are
-      only about a quarter of the country's centres — and they are not spread evenly. Some seats have almost
-      none. Reading a gender gap off two or three centres is not reading anything.
+      This analysis covers only the seats where <strong>single-sex centres hold at least 10% of the
+      constituency's electorate</strong> — <strong id="s-seats">226</strong> of
+      <strong id="s-total">297</strong>. The other <span id="s-drop">71</span> are dropped entirely.
     </p>
     <p class="lede">
-      So this analysis keeps only the seats where <strong>single-sex centres hold at least 10% of the
-      constituency's electorate</strong>. That is <strong id="s-seats">226</strong> of
-      <strong id="s-total">297</strong> seats. <span id="s-drop">71</span> seats are dropped entirely.
+      The cut is there because most polling centres are mixed, so a man's vote cannot be told from a
+      woman's. Single-sex centres are only about a quarter of the country's centres — and they are not
+      spread evenly. Some seats have almost none, and seven have none at all. Reading a gender gap off two
+      or three centres is not reading anything.
     </p>
     <div class="scopebox">
       <b>Read this as a finding about these 226 seats, not about Bangladesh.</b> The seats that survive the
@@ -185,10 +186,11 @@
     <div class="step">5 · Could it just be location?</div>
     <h2>We checked men and women in the same building</h2>
     <p class="lede">
-      Maybe women's centres simply sit in places that like Jamaat. To test that we kept only buildings holding
-      <strong>both</strong> a men's centre and a women's centre — same address, same street, same
-      neighbourhood — and compared only inside them:
-      <strong id="s-pairs">1,204</strong> buildings, <strong id="s-paircen">2,813</strong> centres.
+      We kept only buildings holding <strong>both</strong> a men's centre and a women's centre — same
+      address, same street, same neighbourhood — and compared only inside them:
+      <strong id="s-pairs">1,204</strong> buildings, <strong id="s-paircen">2,813</strong> centres. That
+      answers the obvious objection, which is that women's centres might simply sit in places that like
+      Jamaat.
     </p>
     <p class="lede">
       Inside the same building, women give <em>both</em> big parties slightly more than men do, because women's
@@ -294,7 +296,7 @@
       Jamaat</span> — <span id="s-flipb">4</span> go the other way.
     </p>
     <p class="lede">
-      Read the <strong>gap between the two rows</strong>, not the absolute numbers. Counted together, the same
+      Read the <strong>gap between the bottom two rows</strong>, not the absolute numbers. Counted together, the same
       centres put Jamaat ahead in <strong id="s-bothj">54</strong> seats, while the official result gave it
       <strong id="s-offj">47</strong> of them. The single-sex centres are already friendlier to Jamaat than the
       full count is, so neither the men's figure nor the women's figure is a forecast of anything.
