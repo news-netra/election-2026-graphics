@@ -18,7 +18,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.65;
        -webkit-font-smoothing:antialiased;letter-spacing:-.005em;}
   .wrap{max-width:900px;margin:0 auto;padding:0 22px;}
 
@@ -26,22 +26,30 @@
   .kicker{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
           color:var(--jam);margin-bottom:18px;}
   h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;line-height:1.12;
-     letter-spacing:-.028em;margin-bottom:20px;max-width:15ch;}
+     letter-spacing:-.028em;margin-bottom:20px;max-width:16ch;}
   h1 em{font-style:normal;font-weight:600;color:var(--ink2);}
-  .stand{font-size:clamp(16px,2.2vw,19.5px);color:var(--ink2);max-width:660px;}
+  .stand{font-size:clamp(16px,2.2vw,19.5px);color:var(--ink2);max-width:680px;margin-bottom:14px;}
 
   section{padding:44px 0;border-top:1px solid var(--grid);}
   .step{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
         color:var(--muted);margin-bottom:10px;}
   h2{font-size:clamp(22px,3.4vw,31px);font-weight:800;line-height:1.18;
-     margin-bottom:14px;letter-spacing:-.022em;}
-  p.lede{font-size:16.5px;color:var(--ink2);max-width:680px;margin-bottom:10px;}
+     margin-bottom:16px;letter-spacing:-.022em;}
+  h3{font-size:17.5px;font-weight:700;margin:26px 0 8px;letter-spacing:-.012em;}
+  p.lede{font-size:16.5px;color:var(--ink2);max-width:700px;margin-bottom:14px;}
   p.lede strong{color:var(--ink);font-weight:700;}
   .hl{background:linear-gradient(transparent 60%,rgba(194,65,12,.20) 60%);font-weight:700;color:var(--ink);}
 
-  .scopebox{background:#fffaf6;
-            padding:16px 18px;margin-top:22px;font-size:14.5px;color:var(--ink2);}
+  .scopebox{background:#fffaf6;padding:18px 20px;margin-top:22px;font-size:15px;color:var(--ink2);}
   .scopebox b{color:var(--ink);}
+  .scopebox p{margin-bottom:10px;}
+  .scopebox p:last-child{margin-bottom:0;}
+  .aside{background:var(--surface);padding:18px 20px;margin:24px 0;font-size:14.5px;color:var(--ink2);}
+  .aside .t{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+            color:var(--muted);margin-bottom:8px;}
+  .aside b{color:var(--ink);}
+  .aside p{margin-bottom:9px;}
+  .aside p:last-child{margin-bottom:0;}
 
   .tiles{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;}
   .tile{flex:1 1 160px;background:var(--surface);padding:16px 18px;box-shadow:var(--shadow);}
@@ -52,7 +60,7 @@
   figure{background:var(--surface);padding:20px 20px 16px;margin-top:22px;box-shadow:var(--shadow);}
   figcaption{font-size:14.5px;font-weight:700;margin-bottom:2px;}
   .sub{font-size:12.5px;color:var(--ink2);margin-bottom:14px;}
-  .note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.5;}
+  .note{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.55;}
   .legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px;}
   .legend .i{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--ink2);font-weight:600;}
   .sw{width:12px;height:12px;flex-shrink:0;}
@@ -63,25 +71,32 @@
   .gl{stroke:var(--grid);stroke-width:1;}
   .base{stroke:var(--line);stroke-width:1.5;}
 
-  table.tbl{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px;}
+  .tblwrap{overflow-x:auto;margin-top:16px;}
+  table.tbl{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px;}
   table.tbl th{text-align:left;font-weight:700;color:var(--ink2);border-bottom:1.5px solid var(--line);
-               padding:8px 10px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;}
-  table.tbl td{padding:8px 10px;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums;}
-  table.tbl td.n{text-align:right;}
+               padding:9px 10px;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;}
+  table.tbl td{padding:9px 10px;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums;}
+  table.tbl th.n,table.tbl td.n{text-align:right;}
+  table.tbl tr.mark td{background:#fffaf6;font-weight:700;color:var(--ink);}
+
+  ul.plain{list-style:none;margin:14px 0;max-width:700px;}
+  ul.plain li{font-size:16px;color:var(--ink2);padding:7px 0 7px 20px;position:relative;}
+  ul.plain li::before{content:"·";position:absolute;left:6px;font-weight:800;color:var(--jam);}
+  ul.plain li b{color:var(--ink);}
 
   ul.keys{list-style:none;display:grid;gap:12px;margin-top:8px;}
-  ul.keys li{background:var(--surface);
-             padding:15px 17px;font-size:15.5px;color:var(--ink2);}
+  ul.keys li{background:var(--surface);padding:16px 18px;font-size:15.5px;color:var(--ink2);}
   ul.keys li b{color:var(--ink);}
   ul.keys li.caution b{color:var(--neg);}
 
-  footer{padding:34px 0 70px;border-top:1px solid var(--grid);color:var(--muted);font-size:12.5px;line-height:1.6;}
-  footer code{background:rgba(60,55,50,.07);padding:1px 5px;font-size:11.5px;}
-  footer p{margin-bottom:10px;}
+  footer{padding:34px 0 70px;border-top:1px solid var(--grid);color:var(--muted);font-size:13px;line-height:1.65;}
+  footer h3{font-size:14px;color:var(--ink2);margin:22px 0 6px;}
+  footer code{background:rgba(60,55,50,.07);padding:1px 5px;font-size:12px;}
+  footer p{margin-bottom:10px;max-width:760px;}
 
   .tt{position:fixed;pointer-events:none;z-index:200;opacity:0;background:var(--ink);color:#fff;
       padding:8px 11px;font-size:12.5px;line-height:1.45;box-shadow:0 6px 20px rgba(0,0,0,.28);
-      transition:opacity .1s;max-width:250px;}
+      transition:opacity .1s;max-width:260px;}
 </style>
 </head>
 <body>
@@ -91,46 +106,154 @@
     <span class="kicker">Bangladesh 2026 · How men and women voted</span>
     <h1>How Women Voted: <em>Evidence from Bangladesh’s 2026 Polling-Centre Results</em></h1>
     <p class="stand">
-      In Bangladesh, men and women often vote at separate centres. Where enough of a seat votes that way,
-      we can count their votes separately. Jamaat-e-Islami did better with women than with men — but only
-      outside the big cities, where the pattern turns the other way.
+      In most countries there is no way to know how men and women voted differently, because ballots are
+      secret and everyone votes at the same places. Bangladesh is unusual. Thousands of its polling centres
+      serve only men or only women, and the Election Commission publishes results for each centre separately.
+      That means the difference can be counted directly, from real votes, rather than estimated from a survey.
+    </p>
+    <p class="stand">
+      This page reports what those centres show. The short version: Jamaat-e-Islami did better among women
+      than among men. But that is only true outside the big cities. Inside them the pattern runs the other
+      way, and the national average hides that completely.
     </p>
   </header>
 
   <section>
-    <div class="step">1 · What this covers</div>
+    <div class="step">1 · How this is possible at all</div>
+    <h2>Separate centres let us count men’s and women’s votes separately</h2>
+    <p class="lede">
+      Bangladesh runs a large number of sex-segregated polling centres. Some serve only male voters, some
+      serve only female voters, and the rest are mixed. Because results are published one centre at a time,
+      the votes cast at a men-only centre can be added up on their own, and the same for a women-only centre.
+      No survey, no modelling, no guessing at who voted for whom. These are counted ballots.
+    </p>
+    <p class="lede">
+      The limit is that this only works where the segregation exists. Mixed centres cannot be split, so they
+      tell us nothing about sex. Across the country there are <strong>42,382</strong> polling centres, and
+      about <strong>11,100</strong> of them are single-sex. That is roughly a quarter.
+    </p>
+
+    <h3>The catch: single-sex centres are mostly an urban thing</h3>
+    <p class="lede">
+      Those single-sex centres are not scattered evenly across the country. They are heavily concentrated in
+      cities. More than three-quarters of polling centres inside city corporations are single-sex. In
+      villages, fewer than one in five are.
+    </p>
+    <p class="lede">
+      This matters more than it might first appear, so it is worth stating plainly. Villages hold about
+      <strong>80% of Bangladesh's voters</strong> but only a small share of its single-sex centres. Cities
+      hold about <strong>10% of voters</strong> but supply a large share of the centres we can actually read.
+      Anything measured from single-sex centres therefore over-weights cities compared with the country as a
+      whole. Later on this turns out to change the answer, not just the precision of it.
+    </p>
+    <figure>
+      <figcaption>How much of each kind of place we can read</figcaption>
+      <div class="sub">Share of that place's polling centres that are single-sex, and so countable by sex</div>
+      <div id="c0"></div>
+      <div class="note" id="n0"></div>
+    </figure>
+  </section>
+
+  <section>
+    <div class="step">2 · What this page covers</div>
     <h2>226 seats, not the whole country</h2>
     <p class="lede">
-      This analysis covers only the seats where <strong>single-sex centres hold at least 10% of the
-      constituency's electorate</strong> — <strong id="s-seats">226</strong> of
-      <strong id="s-total">297</strong>. The other <span id="s-drop">71</span> are dropped entirely.
+      This analysis covers only the constituencies where <strong>single-sex centres hold at least 10% of the
+      constituency's electorate</strong>. That is <strong id="s-seats">226</strong> of
+      <strong id="s-total">297</strong> seats. The other <strong id="s-drop">71</strong> are left out
+      completely.
     </p>
     <p class="lede">
-      The cut is there because most polling centres are mixed, so a man's vote cannot be told from a
-      woman's. Single-sex centres are only about a quarter of the country's centres — and they are not
-      spread evenly. Some seats have almost none, and seven have none at all. Reading a gender gap off two
-      or three centres is not reading anything.
+      The reason for the cut is that coverage varies enormously from seat to seat. In some constituencies
+      almost every centre is single-sex. In others there are two. Seven constituencies have none at all. If
+      a seat has two single-sex centres out of a hundred and forty, then a "gender gap" calculated for that
+      seat is not measuring the seat. It is measuring two buildings. Averaging those seats in alongside
+      well-covered ones adds noise and nothing else.
     </p>
-    <div class="scopebox">
-      <b>Read this as a finding about these 226 seats, not about Bangladesh.</b> The seats that survive the
-      cut lean urban, because sex-segregated polling is mostly an urban practice: 77% of city-corporation
-      centres are single-sex against 18% of village (union) centres. Anything below is a statement about the
-      voters we can actually see.
+    <p class="lede">
+      Ten percent is a judgement call, not a law. So the obvious question is whether the finding depends on
+      where the line is drawn. The table below moves the line and shows what happens.
+    </p>
+
+    <div class="tblwrap">
+      <table class="tbl">
+        <thead><tr>
+          <th>Minimum coverage</th><th class="n">Seats kept</th><th class="n">All places</th>
+          <th class="n">Villages</th><th class="n">Small towns</th><th class="n">Big cities</th>
+          <th class="n">City share of centres</th>
+        </tr></thead>
+        <tbody id="thr-body"></tbody>
+      </table>
     </div>
+    <p class="lede" style="margin-top:16px">
+      Read the last four columns rather than the third. The overall figure slides from
+      <strong>+1.7</strong> down to <strong>+0.8</strong> as the cut gets stricter, which looks alarming
+      until you see why. Tightening the cut throws out rural seats first, because rural seats have the least
+      coverage. So the surviving sample gets more urban at every step — the city share of centres climbs from
+      29% to 51% down the table. Since cities are where the gap reverses, the average drops.
+    </p>
+    <p class="lede">
+      <span class="hl">Within each kind of place, the answer barely moves at any cut.</span> Villages sit
+      near +2.3 the whole way down. Small towns sit near +2.35. Cities sit near −0.6. The wobble in the
+      headline number is entirely about which places are in the sample, not about the underlying pattern
+      being fragile. That is the strongest reason to read this story by kind of place rather than as one
+      national number, and it is why the rest of the page does exactly that.
+    </p>
+
+    <div class="scopebox">
+      <p><b>Read this as a finding about these 226 seats, not about Bangladesh as a whole.</b></p>
+      <p>Two limits apply throughout. First, only the quarter or so of voters who use single-sex centres are
+      visible here at all. Second, that quarter leans urban for the reason given above. Where a number below
+      would be misleading without that context, it is flagged in place.</p>
+    </div>
+
     <div class="tiles">
-      <div class="tile"><div class="n" id="t-seats">226</div><div class="l">Seats in scope — 10% coverage or better</div></div>
+      <div class="tile"><div class="n" id="t-seats">226</div><div class="l">Seats covered — 10% coverage or better</div></div>
       <div class="tile"><div class="n" id="t-centres">10,468</div><div class="l">Single-sex centres used</div></div>
       <div class="tile"><div class="n" id="t-cov">30<small>%</small></div><div class="l">Of the electorate in those seats</div></div>
-      <div class="tile"><div class="n" id="t-med">22<small>%</small></div><div class="l">Coverage in a typical seat in scope</div></div>
+      <div class="tile"><div class="n" id="t-med">22<small>%</small></div><div class="l">Coverage in a typical covered seat</div></div>
+    </div>
+
+    <div class="aside">
+      <div class="t">Who the parties are</div>
+      <p><b>BNP</b> — the Bangladesh Nationalist Party, the largest party in this election and the winner of
+      most seats.</p>
+      <p><b>Jamaat</b> — Jamaat-e-Islami, an Islamist party and the main challenger. It is the party this
+      page is mostly about.</p>
+      <p><b>Islami Andolan</b> — a second, smaller Islamist party. It matters here as a comparison: if women
+      simply favoured religious parties in general, this one should have gained among women too.</p>
+      <p><b>NCP</b> — the National Citizen Party, a newer party that polled strongly in some cities.</p>
+      <p>On Bangladeshi ballots parties are identified by a symbol as well as a name. Jamaat's is the scales
+      (দাঁড়িপাল্লা), the BNP's is the sheaf of paddy (ধানের শীষ). The source data uses the symbols.</p>
+    </div>
+
+    <div class="aside">
+      <div class="t">A note on “points”</div>
+      <p>Vote shares are given as a percentage of valid votes. Differences between two shares are given in
+      <b>percentage points</b>, usually shortened to points.</p>
+      <p>If Jamaat took 31.2% of men's votes and 32.8% of women's, the difference is <b>1.6 points</b>. It is
+      not "1.6 percent", and it is not a 1.6% increase — as a proportion of Jamaat's own vote the change is
+      about five percent. Points are used throughout because they are what matters for who wins.</p>
     </div>
   </section>
 
   <section>
-    <div class="step">2 · The main finding</div>
+    <div class="step">3 · The main finding</div>
     <h2>The BNP got the same from both. Jamaat did not.</h2>
     <p class="lede">
-      Across the 226 seats, the BNP's share is the same among men and women to within a rounding error.
-      Jamaat's is <strong id="s-gap">1.6 points</strong> higher among women.
+      Take all 10,468 single-sex centres in the 226 seats. Add up every vote cast at a men's centre, then
+      every vote cast at a women's centre, and compare the two.
+    </p>
+    <p class="lede">
+      The BNP comes out almost exactly level: <strong>49.24%</strong> of the men's votes and
+      <strong>49.25%</strong> of the women's. That is a difference of one-hundredth of a point, which is to
+      say no difference at all. Jamaat comes out <strong id="s-gap">1.6 points</strong> higher among women,
+      at 32.8% against 31.2%.
+    </p>
+    <p class="lede">
+      The BNP result is useful in its own right. It tells us the method is not manufacturing gaps out of
+      nothing. If splitting votes this way produced a spurious difference for any large party, the BNP would
+      show one. It does not.
     </p>
     <figure>
       <figcaption>Vote share among men and among women</figcaption>
@@ -141,187 +264,329 @@
       </div>
       <div id="c1"></div>
     </figure>
+    <p class="lede">
+      Before going further it is worth being clear about what 1.6 points is and is not. It is not a landslide
+      among women, and it does not mean women as a group backed Jamaat. Roughly two-thirds of women at these
+      centres voted for someone else. What it means is that Jamaat's support was somewhat stronger among
+      women than among men, by an amount that is large enough to matter in close seats and large enough to be
+      well outside any plausible rounding or counting noise at this sample size.
+    </p>
   </section>
 
   <section>
-    <div class="step">3 · Is it just religious parties?</div>
-    <h2>No — the other Islamic party did worse with women</h2>
+    <div class="step">4 · Ruling out the simplest explanation</div>
+    <h2>It is not just that women prefer religious parties</h2>
     <p class="lede">
-      If women simply preferred religious parties, Islami Andolan would have gained too. It did not — it
-      <strong>lost</strong> ground, and so did the others.
-      <span class="hl">Jamaat is the only party here that women backed more than men did.</span>
+      The first explanation most people reach for is that women in Bangladesh lean towards religious parties
+      in general, and Jamaat is simply picking up that tendency. There is a direct way to test this. Islami
+      Andolan is also an Islamist party and it contested widely. If the explanation were right, it should
+      show the same pattern.
+    </p>
+    <p class="lede">
+      It does not. Islami Andolan did <strong>worse</strong> among women than among men, by 0.4 points. So
+      did the NCP, by 0.2 points. <span class="hl">Jamaat is the only party in this data that women backed
+      more than men did.</span> Whatever is happening, it is specific to Jamaat rather than general to
+      religious parties.
     </p>
     <figure>
-      <figcaption>Every party: share among men → share among women</figcaption>
-      <div class="sub">An orange line means the party gained among women</div>
+      <figcaption>Every party: share among men, then share among women</figcaption>
+      <div class="sub">Each line runs from the men's share to the women's share. Orange means the party gained among women.</div>
       <div id="c2"></div>
+      <div class="note">Only parties with meaningful national vote are shown. The remaining symbols in the
+        source each took well under one percent.</div>
     </figure>
   </section>
 
   <section>
-    <div class="step">4 · Where the gap actually lives</div>
+    <div class="step">5 · Where the gap actually lives</div>
     <h2>Villages and small towns, yes. Big cities, the opposite.</h2>
     <p class="lede">
-      The single national number hides a split. In villages and in small towns women gave Jamaat
-      <strong>about 2.4 points more</strong> than men did. In the big cities they gave it
-      <strong>less</strong> — and gave the BNP more.
+      The single national figure of 1.6 points hides a split large enough to change how the whole thing
+      should be read. Every polling centre in Bangladesh sits in one of three kinds of administrative area:
+      a union, which is rural; a municipality, which is a small town; or a city corporation, which is a big
+      city. Splitting the same centres three ways gives three different answers.
+    </p>
+    <ul class="plain">
+      <li><b>Villages.</b> Jamaat takes 31.4% of men's votes and 33.7% of women's. A gain of
+        <b>2.4 points</b> among women.</li>
+      <li><b>Small towns.</b> 30.9% of men's votes and 33.3% of women's. A gain of
+        <b>2.4 points</b>, almost identical to villages.</li>
+      <li><b>Big cities.</b> 31.0% of men's votes and 30.4% of women's. A <b>loss</b> of 0.5 points. Here it
+        is the BNP that gains among women, by 1.2 points.</li>
+    </ul>
+    <p class="lede">
+      <span class="hl">This is the most important thing on the page.</span> Outside the big cities the effect
+      is roughly half again as large as the national average suggests. Inside them it does not merely
+      weaken — it reverses. Reporting one national number for a pattern that changes sign between places is
+      misleading, however carefully the number itself is calculated.
     </p>
     <p class="lede">
-      <span class="hl">This is the most important line in the whole analysis.</span> It also explains why the
-      national average is as low as it is: roughly a third of the electorate we can see sits in city
-      corporations, where the gap runs backwards and drags the average down.
+      It also explains why the national average sits at 1.6 rather than 2.4. Roughly a third of the
+      electorate we can see is in city corporations, far more than their share of the country, and their
+      negative pulls the average down.
     </p>
     <figure>
       <figcaption>Jamaat's share among men and women, by kind of place</figcaption>
-      <div class="sub">Share of valid votes · the number under each pair is the change in Jamaat's lead over the BNP</div>
+      <div class="sub">Share of valid votes. The figure under each pair is how far Jamaat's lead over the BNP moves between the men's and women's centres.</div>
       <div class="legend">
         <div class="i"><span class="sw" style="background:var(--men)"></span>Men</div>
         <div class="i"><span class="sw" style="background:var(--women)"></span>Women</div>
       </div>
       <div id="c3"></div>
+      <div class="note">Jamaat's own share moves by +2.4, +2.4 and −0.5 points. The figures under the bars
+        also account for what the BNP did, which is why they are slightly larger.</div>
     </figure>
   </section>
 
   <section>
-    <div class="step">5 · Could it just be location?</div>
+    <div class="step">6 · Could it just be location?</div>
     <h2>We checked men and women in the same building</h2>
     <p class="lede">
-      We kept only buildings holding <strong>both</strong> a men's centre and a women's centre — same
-      address, same street, same neighbourhood — and compared only inside them:
-      <strong id="s-pairs">1,204</strong> buildings, <strong id="s-paircen">2,813</strong> centres. That
-      answers the obvious objection, which is that women's centres might simply sit in places that like
-      Jamaat.
+      There is a serious objection to everything so far. Men's centres and women's centres are different
+      buildings in different spots. If women's centres happen to sit in the parts of a constituency that
+      already favour Jamaat, then what looks like a difference between men and women could really be a
+      difference between neighbourhoods.
     </p>
     <p class="lede">
-      Inside the same building, women give <em>both</em> big parties slightly more than men do, because women's
-      ballots go less often to small parties. So the honest measure is what happens to
-      <strong>Jamaat's lead over the BNP</strong>. Split by kind of place, that measure repeats the pattern
-      above: <span class="hl">Jamaat's lead grows among women in villages and towns and shrinks in the
-      cities</span>, all three significant.
+      The way to deal with this is to compare only within a single location. Some buildings host both a
+      men's centre and a women's centre. Same address, same street, same catchment. Keeping only those and
+      comparing inside them removes the objection, because location is then held fixed.
+      That leaves <strong id="s-pairs">1,204</strong> buildings containing
+      <strong id="s-paircen">2,813</strong> centres.
+    </p>
+
+    <h3>Why the comparison has to be Jamaat against the BNP</h3>
+    <p class="lede">
+      Inside the same building, women give <em>both</em> big parties slightly more than men do. This is not
+      mysterious. Women's ballots go less often to small parties and independents, so the two leaders each
+      pick up a little of what the small parties lose. Looking at Jamaat's share on its own would credit
+      Jamaat with something that is really just this concentration effect.
+    </p>
+    <p class="lede">
+      The honest measure is therefore <strong>Jamaat's lead over the BNP</strong>, and how far that lead
+      moves between the men's side and the women's side of the same building. If Jamaat gains only because
+      of concentration, its lead over the BNP will not move.
+    </p>
+    <p class="lede">
+      Split by kind of place, that measure repeats the earlier pattern closely. Jamaat's lead grows among
+      women in villages and in small towns, and shrinks in big cities. All three results are statistically
+      significant, meaning they are far too large to be chance.
     </p>
     <figure>
-      <figcaption>Change in Jamaat's lead over the BNP, women's side vs men's side of the same building</figcaption>
-      <div class="sub">In percentage points · the bar shows the range we are confident about (95%)</div>
+      <figcaption>Change in Jamaat's lead over the BNP, women's side against men's side of the same building</figcaption>
+      <div class="sub">In percentage points. The bar shows the range the true value is very likely to sit in.</div>
       <div id="c4"></div>
       <div class="note" id="n4"></div>
     </figure>
+    <div class="aside">
+      <div class="t">Why this chart is never combined into one bar</div>
+      <p>Combining the three rows into a single figure gives <b>−0.5 points</b>, the opposite sign to two of
+      the three groups it is made from. That is not a paradox in the data. It is a well-known statistical
+      trap called <b>Simpson's paradox</b>, and it happens whenever the groups being combined are mixed in
+      very different proportions from the population.</p>
+      <p>Here the reason is straightforward. Buildings large enough to hold both a men's and a women's centre
+      are usually big-city buildings. So the matched sample is <b>41% big-city</b>, against
+      <b>31%</b> of the centres in scope and around 10% of the country's voters. The one group where the
+      effect is negative dominates the combined figure and flips it.</p>
+      <p>This is worth spelling out because an earlier version of this analysis reported the combined figure
+      and drew the wrong conclusion from it. The three rows are the result. The combined number is an
+      artefact of who ends up in the sample.</p>
+    </div>
+    <p class="lede">
+      One thing this test does <strong>not</strong> do, despite how such tests are usually described: it does
+      not remove geography from the picture. It holds geography fixed within each kind of place, which is a
+      narrower and more honest claim. The gap is real inside villages and inside towns, and it is genuinely
+      negative inside cities.
+    </p>
   </section>
 
   <section>
-    <div class="step">6 · The strongest region</div>
+    <div class="step">7 · The strongest region</div>
     <h2>The gap is widest in the south-west</h2>
     <p class="lede">
-      Within the seats in scope, the gap is concentrated in the <strong>Khulna division</strong> — the
-      Jessore–Satkhira–Jhenaidah belt — where women push Jamaat from
-      <strong id="s-beltm">46%</strong> to <strong id="s-beltf">past 50%</strong>. In a typical seat elsewhere
-      men and women voted almost the same: the median seat gap is only <span id="s-median">+0.2</span> points.
+      Within the 226 seats, the gap is far from evenly spread. In a typical seat men and women voted
+      almost identically: the median seat gap is <span id="s-median">+0.2</span> points, which is
+      effectively nothing. The national figure is driven by a minority of seats where the gap is large.
+    </p>
+    <p class="lede">
+      Those seats cluster in one place. Across the <strong>Khulna division</strong> in the south-west — the
+      Jessore, Satkhira and Jhenaidah belt — women take Jamaat from <strong id="s-beltm">46%</strong> to
+      <strong id="s-beltf">past 50%</strong>. Crossing 50% matters, because in a two-way contest it is the
+      difference between coming second and winning. In the rest of the country the same comparison moves
+      Jamaat only about a point, from roughly 29.5% to 30.5%.
     </p>
     <figure>
-      <figcaption>Jamaat in the south-west vs the rest of the country</figcaption>
-      <div class="sub">Share of valid votes · seats in scope only</div>
+      <figcaption>Jamaat in the south-west against the rest of the country</figcaption>
+      <div class="sub">Share of valid votes at single-sex centres · covered seats only</div>
       <div class="legend">
         <div class="i"><span class="sw" style="background:var(--men)"></span>Men</div>
         <div class="i"><span class="sw" style="background:var(--women)"></span>Women</div>
       </div>
       <div id="c5"></div>
     </figure>
+    <p class="lede">
+      The same concentration shows up district by district. The chart below ranks every district with enough
+      single-sex centres to be worth reporting. The top of the list is dominated by the south-west. The
+      bottom of the list, where women gave Jamaat less than men did, is mostly the big urban and eastern
+      districts.
+    </p>
     <figure>
       <figcaption>District by district</figcaption>
-      <div class="sub">How much more (or less) women gave Jamaat, in percentage points · scroll for the full list</div>
+      <div class="sub">How much more, or less, women gave Jamaat than men did, in percentage points. Scroll for the full list.</div>
       <div style="max-height:430px;overflow-y:auto;overflow-x:hidden;margin:0 -4px;padding:0 4px">
         <div id="c6"></div>
       </div>
-      <div class="note">Districts with at least 6 single-sex centres of each sex inside the seats in scope.</div>
+      <div class="note">Districts with at least 6 single-sex centres of each sex inside the covered seats.
+        Bars are shaded orange where women gave Jamaat more, grey where they gave it less.</div>
     </figure>
   </section>
 
   <section>
-    <div class="step">7 · The same region won Jamaat its seats</div>
+    <div class="step">8 · The same region won Jamaat its seats</div>
     <h2>The south-west gave Jamaat much of what it won</h2>
     <p class="lede">
-      That belt is small — <strong id="s-beltpct">13%</strong> of the seats in scope. But Jamaat won
-      <strong id="s-beltwon">18 of 29</strong> seats there, which is <strong id="s-beltshare">38%</strong> of
-      everything it won inside this scope. Its strongest region and its widest gender gap are the same place.
+      The south-west is a small part of the country. It is <strong id="s-beltpct">13%</strong> of the seats
+      covered here. But Jamaat won <strong id="s-beltwon">18 of the 29</strong> covered seats in it, against
+      a much thinner rate everywhere else, and those 18 make up <strong id="s-beltshare">38%</strong> of
+      everything it won inside this scope.
+    </p>
+    <p class="lede">
+      So the region where women moved most towards Jamaat is also the region that delivered Jamaat its seats.
+      That is suggestive, but on its own it is not evidence of anything causal. It could simply be that
+      Jamaat is strong in the south-west, full stop, and that both facts are separate consequences of that
+      strength. The next section tests exactly that.
     </p>
     <figure>
       <figcaption>How many seats Jamaat won, by region</figcaption>
-      <div class="sub">Orange shows seats won, grey shows all seats in scope in the region</div>
+      <div class="sub">Orange shows seats won. Grey shows all covered seats in that region.</div>
       <div id="c7"></div>
     </figure>
   </section>
 
   <section>
-    <div class="step">8 · The key test</div>
-    <h2>It is not only about that one region</h2>
+    <div class="step">9 · The key test</div>
+    <h2>The pattern holds outside that region too</h2>
     <p class="lede">
-      A fair question: is this just "Jamaat is strong in Khulna", counted twice? So we split the seats both
-      ways at once. <span class="hl">Even outside the belt, the women's gap is about five times bigger in
-      seats Jamaat won than in seats it lost</span> — <span id="s-restwon">+2.5</span> against
-      <span id="s-restlost">+0.5</span> points.
+      The worry from the last section is that "Jamaat does better with women" and "Jamaat wins seats" might
+      both just be "Jamaat is strong in Khulna", counted twice. To check, the seats are split two ways at
+      once: by region, and by whether Jamaat actually won them.
+    </p>
+    <p class="lede">
+      If the region were the whole story, then outside the south-west there should be no relationship between
+      the women's gap and whether Jamaat won. There is one.
+      <span class="hl">Even outside the belt, the gap is about five times larger in seats Jamaat won than in
+      seats it lost</span> — <span id="s-restwon">+2.5</span> points against
+      <span id="s-restlost">+0.5</span>.
     </p>
     <figure>
-      <figcaption>Women's gap, split by region <em>and</em> by whether Jamaat won</figcaption>
-      <div class="sub">How much more women gave Jamaat, in percentage points</div>
+      <figcaption>Women's gap, split by region <em>and</em> by whether Jamaat won the seat</figcaption>
+      <div class="sub">How much more women gave Jamaat than men did, in percentage points</div>
       <div id="c8"></div>
     </figure>
+    <p class="lede">
+      Viewed a different way: across all covered seats the average gap is about 1.3 points, but in the seats
+      Jamaat actually won it is 3.9, and in the seats the BNP won it is 0.7. Where Jamaat was competitive,
+      women moved towards it considerably more than the headline figure suggests.
+    </p>
+    <p class="lede">
+      A caution on direction. This shows the gap and winning travel together. It does not establish that the
+      gap caused the wins. Jamaat winning a seat and women favouring Jamaat in that seat may both follow from
+      the party being organisationally strong there. Nothing in this data can separate those.
+    </p>
     <figure>
       <figcaption>Women's gap where Jamaat won, compared with everywhere else</figcaption>
-      <div class="sub">Seat winners are the official result; the gap is measured at single-sex centres</div>
+      <div class="sub">Seat winners are the official result. The gap is measured at single-sex centres.</div>
       <div id="c9"></div>
     </figure>
   </section>
 
   <section>
-    <div class="step">9 · One more thing</div>
-    <h2>Fewer women voted — and they still chose Jamaat more</h2>
+    <div class="step">10 · Turnout</div>
+    <h2>Fewer women voted, and they still chose Jamaat more</h2>
     <p class="lede">
-      Turnout at women's centres was about <strong>5 points lower</strong> than at men's. So this is not
-      because more women came out. Fewer came, and they still gave Jamaat a bigger share. It is about
-      <strong>choice</strong>, not turnout.
+      One more alternative explanation is worth closing off. If turnout among women had been unusually high,
+      the difference might reflect who turned out rather than what they preferred — an unusual surge of
+      Jamaat-leaning women, say.
+    </p>
+    <p class="lede">
+      The opposite happened. Turnout at women's centres was <strong>51.6%</strong> against
+      <strong>57.0%</strong> at men's, a gap of about five and a half points. Fewer women voted, and the ones
+      who did still gave Jamaat a larger share. That points to preference rather than mobilisation.
     </p>
     <div class="tiles">
       <div class="tile"><div class="n" style="color:var(--men)" id="t-tm">57.0<small>%</small></div><div class="l">Turnout at men's centres</div></div>
       <div class="tile"><div class="n" style="color:var(--women)" id="t-tf">51.6<small>%</small></div><div class="l">Turnout at women's centres</div></div>
       <div class="tile"><div class="n" id="t-h2h">28.2<small>%</small></div><div class="l">Women's centres where Jamaat beat the BNP <span style="color:var(--muted)">(men's: <span id="t-h2hm">26.3</span>%)</span></div></div>
     </div>
+    <p class="lede" style="margin-top:18px">
+      The third figure counts centres rather than votes, as a check that the result is not being carried by a
+      handful of very large centres. Jamaat finished ahead of the BNP at 28.2% of women's centres and 26.3%
+      of men's. The same direction, measured a different way.
+    </p>
   </section>
 
   <section>
-    <div class="step">10 · What if only one side voted?</div>
-    <h2>On women's votes alone, Jamaat leads more of these seats</h2>
+    <div class="step">11 · What if only one side voted?</div>
+    <h2>On women’s votes alone, Jamaat leads more of these seats</h2>
     <p class="lede">
-      Count each of the 226 seats using only its men's centres, then only its women's.
-      Jamaat leads <strong id="s-menj">46</strong> on men's votes and <strong id="s-womj">57</strong> on
-      women's. <span class="hl">In <span id="s-flipj">15</span> seats men lean BNP but women lean
-      Jamaat</span> — <span id="s-flipb">4</span> go the other way.
+      A natural way to feel the size of the effect is to ask what would happen if only one sex had voted.
+      Take each of the 226 covered seats. Count it using only its men's centres, and see who leads. Then
+      count it again using only its women's centres.
     </p>
     <p class="lede">
-      Read the <strong>gap between the bottom two rows</strong>, not the absolute numbers. Counted together, the same
-      centres put Jamaat ahead in <strong id="s-bothj">54</strong> seats, while the official result gave it
-      <strong id="s-offj">47</strong> of them. The single-sex centres are already friendlier to Jamaat than the
-      full count is, so neither the men's figure nor the women's figure is a forecast of anything.
+      On men's votes Jamaat leads <strong id="s-menj">46</strong> of the seats. On women's votes it leads
+      <strong id="s-womj">57</strong>. <span class="hl">In <span id="s-flipj">15</span> seats the men's
+      centres lean BNP while the women's centres lean Jamaat</span>, and
+      <span id="s-flipb">4</span> go the other way.
+    </p>
+
+    <h3>How to read those numbers, and how not to</h3>
+    <p class="lede">
+      The temptation is to treat 46 and 57 as two possible parliaments. They are not, for three separate
+      reasons, and the chart includes the official result specifically so the difference is visible.
+    </p>
+    <ul class="plain">
+      <li><b>These are only 226 of 297 seats</b>, so no row is a parliament in the first place.</li>
+      <li><b>Each row counts only single-sex centres</b>, which is around 30% of the electorate in those
+        seats. The remaining 70% voted at mixed centres and is not in any of these numbers.</li>
+      <li><b>Those centres lean towards Jamaat compared with the full count.</b> Counting the same
+        single-sex centres together, with both sexes included, puts Jamaat ahead in
+        <strong id="s-bothj">54</strong> seats. The official result, counting every centre, gave it
+        <strong id="s-offj">47</strong>. So the basis is already about seven seats friendlier to Jamaat
+        before anything is split by sex.</li>
+    </ul>
+    <p class="lede">
+      The meaningful quantity is the <strong>distance between the bottom two rows</strong> — 46 against 57 —
+      because both are measured on exactly the same centres, so the urban bias affects them equally and
+      cancels out. The distance is real. The levels are not forecasts of anything.
     </p>
     <figure>
-      <figcaption>Seats led by each party — official, then if only men or only women had voted</figcaption>
+      <figcaption>Seats led by each party — the official result, then if only men or only women had voted</figcaption>
       <div class="sub">Two-party lead at single-sex centres · <span id="cap10">226 seats</span></div>
       <div class="legend">
         <div class="i"><span class="sw" style="background:var(--bnp)"></span>BNP ahead</div>
         <div class="i"><span class="sw" style="background:var(--jam)"></span>Jamaat ahead</div>
-        <div class="i"><span class="sw" style="background:#b6c0cb"></span>Someone else (official only)</div>
+        <div class="i"><span class="sw" style="background:#b6c0cb"></span>Someone else (official row only)</div>
       </div>
       <div id="c10"></div>
+      <div class="note">The bottom three rows assign every seat to whichever of the two leaders is ahead, so
+        they always total 226. The official row is the real count and includes other winners.</div>
     </figure>
+    <p class="lede">
+      The 15 seats where the two sexes disagree are listed below. In every one of them the BNP is ahead at
+      the men's centres and behind at the women's. The label on the right is who actually won the seat on
+      the full official count, and it is worth looking at: in several of these the official margin was not
+      close at all. These are seats where men and women at single-sex centres disagreed, not seats that
+      changed hands.
+    </p>
     <figure>
-      <figcaption>The seats women move to Jamaat</figcaption>
-      <div class="sub">Vote share at women's centres — Jamaat passes the BNP</div>
+      <figcaption>The seats where women’s centres lean Jamaat and men’s lean BNP</figcaption>
+      <div class="sub">Vote share at the women's centres only. The dotted line is 50%.</div>
       <div class="legend">
         <div class="i"><span class="sw" style="background:var(--bnp);border-radius:50%"></span>BNP</div>
         <div class="i"><span class="sw" style="background:var(--jam);border-radius:50%"></span>Jamaat</div>
       </div>
       <div id="c11"></div>
-      <div class="note">In every seat here the BNP is ahead at the men's centres and behind at the women's.
-        The right-hand column is who actually won the seat on the full official count — in several of them
-        the official margin was not close, so these are not seats that changed hands.</div>
     </figure>
   </section>
 
@@ -329,48 +594,79 @@
     <div class="step">In short</div>
     <h2>What to remember</h2>
     <ul class="keys">
-      <li><b>Jamaat is the only party here that women backed more than men</b> — by about 1.6 points across the 226 seats. The BNP was the same for both.</li>
-      <li><b>It is not simply about religious parties.</b> The other Islamic party, Islami Andolan, did worse with women.</li>
-      <li><b>The gap is a village and small-town pattern.</b> About +2.4 points in both. In the big cities it runs the other way.</li>
-      <li><b>Location is not the whole story, but it is part of it.</b> Comparing men and women in the same building gives the same split — Jamaat's lead grows among women outside the cities and shrinks inside them.</li>
-      <li><b>It is concentrated, not national.</b> Almost no gap in the median seat; the widest gaps are in the south-west, where women push Jamaat past 50%.</li>
-      <li><b>That region also gave Jamaat much of what it won</b> — 18 of 29 seats there, 38% of its wins in scope from 13% of the seats.</li>
-      <li><b>Fewer women voted, but they still chose Jamaat more</b> — so it is choice, not turnout.</li>
-      <li class="caution"><b>This is not a national result.</b> It covers 226 of 297 seats, and inside them only the quarter or so of voters who use single-sex centres — a more urban slice than the country. Those centres lean more to Jamaat than the full count does, so the seat numbers here are not projections.</li>
+      <li><b>Jamaat is the only party here that women backed more than men did</b> — by about 1.6 points
+        across the 226 covered seats. The BNP was level to within one-hundredth of a point.</li>
+      <li><b>It is not a general preference for religious parties.</b> Islami Andolan, the other Islamist
+        party, did worse among women, not better.</li>
+      <li><b>The gap is a village and small-town pattern.</b> About 2.4 points in each. In the big cities it
+        runs the other way, with Jamaat losing ground among women and the BNP gaining.</li>
+      <li><b>That split is not an artefact of where the sample line is drawn.</b> Move the coverage cut
+        anywhere from 0% to 30% and the three place-level answers barely change, even though the combined
+        figure slides around.</li>
+      <li><b>Holding location fixed gives the same split.</b> Comparing men's and women's centres in the
+        same building, Jamaat's lead over the BNP grows among women outside the cities and shrinks inside
+        them.</li>
+      <li><b>It is concentrated, not national.</b> The median seat shows almost no gap. The widest gaps are
+        in the south-west, where women push Jamaat past 50%.</li>
+      <li><b>That region also produced much of what Jamaat won</b> — 18 of 29 covered seats there, 38% of
+        its wins in scope from 13% of the seats. The link survives outside the region too.</li>
+      <li><b>Fewer women voted, not more.</b> Turnout at women's centres was 5.4 points lower, so this is
+        about preference rather than turnout.</li>
+      <li class="caution"><b>This is not a national result, and none of it is a projection.</b> It covers
+        226 of 297 seats, and within those only the roughly 30% of voters who use single-sex centres — a
+        more urban group than the country as a whole. Those centres lean more towards Jamaat than the full
+        official count does, so the seat numbers here describe the voters we can see and nothing more.</li>
     </ul>
   </section>
 
   <footer>
-    <p><b>Scope.</b> Every figure covers the <b>226 constituencies</b> where single-sex polling centres hold at
-    least <b>10%</b> of the constituency's electorate. Coverage inside those seats runs from 10% to 98%, median
-    22%. The other 71 seats — including 7 with no single-sex centre at all — are excluded, because a gender gap
-    measured off a handful of centres is noise. Figures come from <b>10,468 single-sex centres</b> (5,247 men's,
-    5,221 women's) holding about 30% of the electorate of the seats in scope. Mixed centres cannot be split by
-    sex and are never used.</p>
+    <h3>Scope</h3>
+    <p>Every figure on this page covers the <b>226 constituencies</b> where single-sex polling centres hold
+    at least <b>10%</b> of the constituency's electorate. Coverage inside those seats runs from 10% to 98%,
+    with a median of 22%. The remaining 71 seats are excluded, including seven that contain no single-sex
+    centre at all. Figures are computed from <b>10,468 single-sex centres</b> — 5,247 men's and 5,221
+    women's — holding about 30% of the electorate of the covered seats. Mixed centres cannot be split by sex
+    and are never used.</p>
 
-    <p><b>Known bias.</b> Sex-segregated polling is mostly an urban practice — 77% of city-corporation centres
-    are single-sex against 18% of village centres — so this sample over-represents cities. Across all 297
-    seats, counting only single-sex centres understates the BNP by 1.7 points, overstates the NCP by 2.2, and
-    calls a different winner from the full result in 23 of 290 covered seats. That is why seat counts here are
-    presented against the same centres counted together, not against the official result.</p>
+    <h3>Known bias in the sample</h3>
+    <p>Sex-segregated polling is largely an urban practice. 77% of city-corporation centres are single-sex,
+    against 42% in municipalities and 18% in unions, so this sample substantially over-represents cities
+    relative to the country. Measured across all 297 seats, counting only single-sex centres understates the
+    BNP by 1.7 points, overstates the NCP by 2.2 points, and picks a different winner from the full official
+    result in 23 of the 290 seats that have any coverage. For that reason seat counts on this page are
+    presented against the same centres counted together, never against the official result, and never as a
+    projection.</p>
 
-    <p><b>Same-building test.</b> Buildings are matched on the exact centre name within a constituency
-    (Bengali letters and digits only). Parenthetical qualifiers such as <code>(বালক শাখা)</code> and
-    <code>(বালিকা শাখা)</code> are <b>kept</b>, since those are separate premises; merging them roughly
-    doubles the sample but mixes different sites and reverses the result, so we do not. Confidence intervals
-    are 95% on the mean of per-building differences. Pooling all types together produces Simpson's paradox —
-    the matched sample is 41% big-city buildings against 31% of the scope's centres — so the test is reported
-    by kind of place, never pooled.</p>
+    <h3>Choice of the 10% cut</h3>
+    <p>The threshold is a judgement, and the table in section 2 shows its effect. Between a 0% and a 30% cut
+    the combined figure moves from +1.7 to +0.8 points, but the village, small-town and big-city figures stay
+    close to +2.3, +2.35 and −0.6 throughout. The movement in the combined figure tracks the rising share of
+    big-city centres in the sample, from 29% to 51%, rather than any change in the underlying pattern.</p>
 
-    <p><b>Other definitions.</b> District charts use districts with 6 or more single-sex centres of each sex.
-    "South-west" is the Khulna division: Bagerhat, Chuadanga, Jashore, Jhenaidah, Khulna, Kushtia, Magura,
-    Meherpur, Narail, Satkhira. Seat winners are the full official count, all parties. Village / small town /
-    big city are the official union, municipality and city-corporation classifications of each centre.
-    Data: <code>male_female_centers.csv</code>, <code>election_results_with_geo.csv</code>. Per-seat coverage
-    and outputs: <code>seats_in_scope.csv</code>.</p>
+    <h3>Same-building test</h3>
+    <p>Buildings are matched on the exact centre name within a constituency, normalised to Bengali letters
+    and digits only. Parenthetical qualifiers such as <code>(বালক শাখা)</code> and <code>(বালিকা শাখা)</code>
+    are <b>kept</b> rather than stripped, because those denote separate premises. Stripping them roughly
+    doubles the matched sample but merges different sites, and reverses the result. 1,204 buildings
+    containing 2,813 centres qualify. Confidence intervals are 95% on the mean of the per-building
+    differences.</p>
+    <p>The test is reported by kind of place and is never pooled. Pooled across all three it returns −0.5
+    points, the opposite sign to two of its three components, because the matched sample is 41% big-city
+    buildings against 31% of the centres in scope. This is Simpson's paradox rather than a finding.</p>
 
-    <p>Symbols: ধানের শীষ = BNP · দাঁড়িপাল্লা = Jamaat-e-Islami · হাতপাখা = Islami Andolan ·
-    শাপলা কলি = NCP. All shares are of valid votes.</p>
+    <h3>Other definitions</h3>
+    <p>Vote shares are of valid votes. Party columns available in the source are eight ballot symbols,
+    together about 91% of the national vote. District charts use districts with at least 6 single-sex centres
+    of each sex. "South-west" means the Khulna division: Bagerhat, Chuadanga, Jashore, Jhenaidah, Khulna,
+    Kushtia, Magura, Meherpur, Narail and Satkhira. Seat winners are the full official count across all
+    parties. Village, small town and big city are the official union, municipality and city-corporation
+    classification of each polling centre.</p>
+
+    <h3>Data</h3>
+    <p>Source files: <code>male_female_centers.csv</code> and <code>election_results_with_geo.csv</code>,
+    both derived from published Election Commission centre-level results. Per-seat coverage and every
+    per-seat output used here are in <code>seats_in_scope.csv</code>. Symbols:
+    ধানের শীষ = BNP · দাঁড়িপাল্লা = Jamaat-e-Islami · হাতপাখা = Islami Andolan · শাপলা কলি = NCP.</p>
   </footer>
 </div>
 <div class="tt" id="tt"></div>
@@ -386,8 +682,37 @@ const NS='http://www.w3.org/2000/svg';
 const el=(n,a)=>{const x=document.createElementNS(NS,n);for(const k in a)x.setAttribute(k,a[k]);return x;};
 const cv=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const sgn=v=>(v>0?'+':'')+v.toFixed(1);
-const sgni=v=>(v>0?'+':'')+v;            /* integer axis ticks */
+const sgni=v=>(v>0?'+':'')+v;
 let D=null,DIST=[],FLIP=[];
+
+/* ---------- 0. how much of each place is readable ---------- */
+function c0(){
+  const h=document.getElementById('c0');h.innerHTML='';
+  const rows=D.coverage_by_type,W=860,mL=230,mR=150,mT=16,rowH=64;
+  const H=mT+rows.length*rowH+10,s=el('svg',{viewBox:`0 0 ${W} ${H}`}),pw=W-mL-mR;
+  rows.forEach((r,i)=>{
+    const cy=mT+i*rowH,bh=32,lab=r.label.split(' (')[0];
+    s.appendChild(el('text',{x:mL-16,y:cy+bh/2,'text-anchor':'end',class:'cat',
+      style:'font-size:13.5px;font-weight:700'})).textContent=lab;
+    s.appendChild(el('text',{x:mL-16,y:cy+bh/2+16,'text-anchor':'end',class:'ax'}))
+      .textContent=r.pct_of_electorate.toFixed(0)+'% of all voters';
+    const bg=el('rect',{x:mL,y:cy,width:pw,height:bh,fill:'rgba(60,55,50,.10)'});
+    bg.addEventListener('mousemove',e=>show(`<b>${r.label}</b><br>${r.centres.toLocaleString()} polling centres in total`,e));
+    bg.addEventListener('mouseleave',hide);s.appendChild(bg);
+    const fg=el('rect',{x:mL,y:cy,width:Math.max(pw*r.pct/100,1),height:bh,fill:cv('--jam')});
+    fg.style.cursor='pointer';
+    fg.addEventListener('mousemove',e=>show(`<b>${r.label}</b><br>${r.single_sex.toLocaleString()} of `+
+      `${r.centres.toLocaleString()} centres are single-sex (${r.pct.toFixed(1)}%)`,e));
+    fg.addEventListener('mouseleave',hide);s.appendChild(fg);
+    s.appendChild(el('text',{x:mL+pw+12,y:cy+bh/2+5,class:'val',
+      style:`font-size:14px;fill:${cv('--jam')}`})).textContent=r.pct.toFixed(0)+'% readable';
+  });
+  h.appendChild(s);
+  document.getElementById('n0').textContent=
+    'The orange part of each bar is the share of that area’s polling centres that serve only men or '+
+    'only women, and can therefore be counted by sex. Villages hold four in five of the country’s '+
+    'voters but are the least readable; big cities hold about one in ten and are the most readable.';
+}
 
 /* ---------- 1. headline grouped bars ---------- */
 function c1(){
@@ -402,7 +727,7 @@ function c1(){
       const bx=cx-(bw*2+gap)/2+j*(bw+gap);
       const r=el('rect',{x:bx,y:y(b[1]),width:bw,height:ph-(y(b[1])-mT),fill:b[2]});
       r.style.cursor='pointer';
-      r.addEventListener('mousemove',e=>show(`<b>${grp[0]} — ${b[0]}</b><br>${b[1].toFixed(1)}% of votes`,e));
+      r.addEventListener('mousemove',e=>show(`<b>${grp[0]} — ${b[0]}</b><br>${b[1].toFixed(2)}% of valid votes`,e));
       r.addEventListener('mouseleave',hide);s.appendChild(r);
       s.appendChild(el('text',{x:bx+bw/2,y:y(b[1])-8,'text-anchor':'middle',class:'val'})).textContent=b[1].toFixed(1);
     });
@@ -410,7 +735,8 @@ function c1(){
     s.appendChild(el('text',{x:cx,y:H-14,'text-anchor':'middle',class:'cat',
       style:'font-size:14.5px;font-weight:700'})).textContent=grp[0];
     s.appendChild(el('text',{x:cx,y:mT+8,'text-anchor':'middle',class:'val',
-      style:`font-size:13px;fill:${d>0.3?cv('--jam'):cv('--muted')}`})).textContent=sgn(d)+' pt for women';
+      style:`font-size:13px;fill:${d>0.3?cv('--jam'):cv('--muted')}`}))
+      .textContent=(Math.abs(d)<0.05?'no difference':sgn(d)+' points for women');
   });
   s.appendChild(el('line',{x1:mL,x2:W-mR,y1:y(0),y2:y(0),class:'base'}));
   h.appendChild(s);
@@ -419,7 +745,7 @@ function c1(){
 /* ---------- 2. dumbbell, all parties ---------- */
 function c2(){
   const h=document.getElementById('c2');h.innerHTML='';
-  const rows=D.parties,rowH=50,mT=8,mB=32,mL=150,mR=80,W=860,max=55;
+  const rows=D.parties,rowH=50,mT=8,mB=32,mL=150,mR=90,W=860,max=55;
   const H=mT+mB+rows.length*rowH,s=el('svg',{viewBox:`0 0 ${W} ${H}`}),pw=W-mL-mR,x=v=>mL+v/max*pw;
   for(let g=0;g<=50;g+=10){s.appendChild(el('line',{x1:x(g),x2:x(g),y1:mT,y2:H-mB,class:'gl'}));
     s.appendChild(el('text',{x:x(g),y:H-mB+17,'text-anchor':'middle',class:'ax'})).textContent=g+'%';}
@@ -431,12 +757,11 @@ function c2(){
     [['Men',r.m,cv('--men')],['Women',r.f,cv('--women')]].forEach(d=>{
       const c=el('circle',{cx:x(d[1]),cy:cy,r:6.5,fill:d[2],stroke:'#fff','stroke-width':2});
       c.style.cursor='pointer';
-      c.addEventListener('mousemove',e=>show(`<b>${r.p} — ${d[0]}</b><br>${d[1].toFixed(1)}%`,e));
+      c.addEventListener('mousemove',e=>show(`<b>${r.p} — ${d[0]}</b><br>${d[1].toFixed(2)}%`,e));
       c.addEventListener('mouseleave',hide);s.appendChild(c);
     });
-    const diff=r.f-r.m;
     s.appendChild(el('text',{x:Math.max(x(r.m),x(r.f))+14,y:cy+4,class:'val',
-      style:`font-size:12.5px;fill:${up?cv('--up'):cv('--muted')}`})).textContent=sgn(diff);
+      style:`font-size:12.5px;fill:${up?cv('--up'):cv('--muted')}`})).textContent=sgn(r.f-r.m);
   });
   h.appendChild(s);
 }
@@ -444,7 +769,7 @@ function c2(){
 /* ---------- 3. Jamaat by settlement type ---------- */
 function c3(){
   const h=document.getElementById('c3');h.innerHTML='';
-  const rows=D.geo,W=860,H=330,mL=46,mR=16,mT=22,mB=76,max=40;
+  const rows=D.geo,W=860,H=340,mL=46,mR=16,mT=22,mB=86,max=40;
   const s=el('svg',{viewBox:`0 0 ${W} ${H}`}),pw=W-mL-mR,ph=H-mT-mB,y=v=>mT+ph-v/max*ph;
   for(let g=0;g<=40;g+=10){s.appendChild(el('line',{x1:mL,x2:W-mR,y1:y(g),y2:y(g),class:'gl'}));
     s.appendChild(el('text',{x:mL-8,y:y(g)+4,'text-anchor':'end',class:'ax'})).textContent=g+'%';}
@@ -454,43 +779,46 @@ function c3(){
       const bx=cx-(bw*2+gap)/2+j*(bw+gap);
       const rc=el('rect',{x:bx,y:y(b[1]),width:bw,height:ph-(y(b[1])-mT),fill:b[2]});
       rc.style.cursor='pointer';
-      rc.addEventListener('mousemove',e=>show(`<b>${r.label} — ${b[0]}</b><br>Jamaat ${b[1].toFixed(1)}%<br>`+
-        `<span style="opacity:.8">${r.centres.toLocaleString()} centres · ${r.share_of_scope.toFixed(0)}% of the scope</span>`,e));
+      rc.addEventListener('mousemove',e=>show(`<b>${r.label} — ${b[0]}</b><br>Jamaat ${b[1].toFixed(2)}%<br>`+
+        `<span style="opacity:.8">${r.centres.toLocaleString()} centres, `+
+        `${r.share_of_scope.toFixed(0)}% of the centres in scope</span>`,e));
       rc.addEventListener('mouseleave',hide);s.appendChild(rc);
       s.appendChild(el('text',{x:bx+bw/2,y:y(b[1])-8,'text-anchor':'middle',class:'val'})).textContent=b[1].toFixed(1);
     });
     const pos=r.margin>0;
     s.appendChild(el('text',{x:cx,y:H-mB+26,'text-anchor':'middle',class:'val',
-      style:`font-size:14px;fill:${pos?cv('--jam'):cv('--neg')}`}))
-      .textContent=(pos?'+':'')+r.margin.toFixed(1)+' pt';
-    s.appendChild(el('text',{x:cx,y:H-mB+44,'text-anchor':'middle',class:'ax',
-      style:'font-size:11px'})).textContent=pos?'to Jamaat':'to the BNP';
-    const lab=r.label.split(' (');
-    s.appendChild(el('text',{x:cx,y:H-16,'text-anchor':'middle',class:'cat',
-      style:'font-size:13px;font-weight:700'})).textContent=lab[0];
+      style:`font-size:15px;fill:${pos?cv('--jam'):cv('--neg')}`}))
+      .textContent=sgn(r.margin)+' points';
+    s.appendChild(el('text',{x:cx,y:H-mB+44,'text-anchor':'middle',class:'ax',style:'font-size:11.5px'}))
+      .textContent=pos?'Jamaat’s lead grows':'Jamaat’s lead shrinks';
+    s.appendChild(el('text',{x:cx,y:H-18,'text-anchor':'middle',class:'cat',
+      style:'font-size:13.5px;font-weight:700'})).textContent=r.label.split(' (')[0];
   });
   s.appendChild(el('line',{x1:mL,x2:W-mR,y1:y(0),y2:y(0),class:'base'}));
   h.appendChild(s);
 }
 
-/* ---------- 4. same-building test, by settlement type ---------- */
+/* ---------- 4. same-building test by settlement type ---------- */
 function c4(){
   const h=document.getElementById('c4');h.innerHTML='';
-  const rows=D.paired.by_geo,W=860,mL=210,mR=110,mT=30,mB=42,rowH=62;
+  const rows=D.paired.by_geo,W=860,mL=210,mR=120,mT=34,mB=46,rowH=64;
   const H=mT+mB+rows.length*rowH;
   const lo=-4.5,hi=4.5,s=el('svg',{viewBox:`0 0 ${W} ${H}`}),pw=W-mL-mR,x=v=>mL+(v-lo)/(hi-lo)*pw;
   for(let g=-4;g<=4;g+=2){
     s.appendChild(el('line',{x1:x(g),x2:x(g),y1:mT-6,y2:H-mB,class:'gl'}));
-    s.appendChild(el('text',{x:x(g),y:H-mB+17,'text-anchor':'middle',class:'ax'})).textContent=sgni(g);
+    s.appendChild(el('text',{x:x(g),y:H-mB+18,'text-anchor':'middle',class:'ax'})).textContent=sgni(g);
   }
-  s.appendChild(el('line',{x1:x(0),x2:x(0),y1:mT-14,y2:H-mB,stroke:cv('--ink'),'stroke-width':1.5}));
-  s.appendChild(el('text',{x:x(0),y:mT-20,'text-anchor':'middle',class:'ax',
+  s.appendChild(el('text',{x:(x(-4.5)+x(0))/2,y:H-mB+34,'text-anchor':'middle',class:'ax',
+    style:'font-size:11px'})).textContent='← lead shifts to the BNP';
+  s.appendChild(el('text',{x:(x(0)+x(4.5))/2,y:H-mB+34,'text-anchor':'middle',class:'ax',
+    style:'font-size:11px'})).textContent='lead shifts to Jamaat →';
+  s.appendChild(el('line',{x1:x(0),x2:x(0),y1:mT-16,y2:H-mB,stroke:cv('--ink'),'stroke-width':1.5}));
+  s.appendChild(el('text',{x:x(0),y:mT-22,'text-anchor':'middle',class:'ax',
     style:'font-weight:700'})).textContent='no difference';
   rows.forEach((r,i)=>{
     const cy=mT+22+i*rowH,m=r.margin,pos=m.mean>0,col=pos?cv('--jam'):cv('--neg');
-    const lab=r.label.split(' (');
     s.appendChild(el('text',{x:mL-18,y:cy,'text-anchor':'end',class:'cat',
-      style:'font-size:13.5px;font-weight:700'})).textContent=lab[0];
+      style:'font-size:13.5px;font-weight:700'})).textContent=r.label.split(' (')[0];
     s.appendChild(el('text',{x:mL-18,y:cy+16,'text-anchor':'end',class:'ax'}))
       .textContent=r.n.toLocaleString()+' buildings';
     s.appendChild(el('line',{x1:x(m.lo),x2:x(m.hi),y1:cy,y2:cy,stroke:col,'stroke-width':7,
@@ -498,20 +826,18 @@ function c4(){
     [m.lo,m.hi].forEach(v=>s.appendChild(el('line',{x1:x(v),x2:x(v),y1:cy-9,y2:cy+9,stroke:col,'stroke-width':2})));
     const c=el('circle',{cx:x(m.mean),cy:cy,r:8,fill:col,stroke:'#fff','stroke-width':2});
     c.style.cursor='pointer';
-    c.addEventListener('mousemove',e=>show(`<b>${r.label}</b><br>Jamaat's lead moves ${sgn(m.mean)} pt`+
-      `<br>confident range ${sgn(m.lo)} to ${sgn(m.hi)}<br>p ${m.p}`+
-      `<br><span style="opacity:.8">Jamaat ${sgn(r.jamaat.mean)} · BNP ${sgn(r.bnp.mean)}</span>`,e));
+    c.addEventListener('mousemove',e=>show(`<b>${r.label}</b><br>Jamaat’s lead moves ${sgn(m.mean)} points`+
+      `<br>very likely between ${sgn(m.lo)} and ${sgn(m.hi)}<br>p ${m.p}`+
+      `<br><span style="opacity:.8">Jamaat on its own ${sgn(r.jamaat.mean)}, BNP ${sgn(r.bnp.mean)}</span>`,e));
     c.addEventListener('mouseleave',hide);s.appendChild(c);
     s.appendChild(el('text',{x:(pos?x(m.hi)+14:x(m.lo)-14),y:cy+5,'text-anchor':pos?'start':'end',
-      class:'val',style:`font-size:13px;fill:${col}`})).textContent=sgn(m.mean)+' pt';
+      class:'val',style:`font-size:13.5px;fill:${col}`})).textContent=sgn(m.mean)+' pts';
   });
   h.appendChild(s);
-  const p=D.paired;
-  document.getElementById('n4').innerHTML=
-    `All three intervals sit clear of zero. Pooling the three together would give `+
-    `${sgn(p.all.margin.mean)} points — the wrong answer, because the matched sample is `+
-    `${p.pct_city_pairs}% big-city buildings against ${p.pct_city_scope}% of the centres in scope. `+
-    `That is Simpson's paradox, which is why this chart is never pooled.`;
+  document.getElementById('n4').textContent=
+    'Each bar is the range the true value very likely falls in. None of the three crosses zero, which is '+
+    'what makes all three results statistically significant. Villages and small towns move towards Jamaat; '+
+    'big cities move towards the BNP.';
 }
 
 /* ---------- 5. belt vs rest ---------- */
@@ -529,7 +855,7 @@ function c5(){
       const bx=cx-(bw*2+gap)/2+j*(bw+gap);
       const r=el('rect',{x:bx,y:y(b[1]),width:bw,height:ph-(y(b[1])-mT),fill:b[2]});
       r.style.cursor='pointer';
-      r.addEventListener('mousemove',e=>show(`<b>${g[0]} — ${b[0]}</b><br>Jamaat ${b[1].toFixed(1)}%`,e));
+      r.addEventListener('mousemove',e=>show(`<b>${g[0]} — ${b[0]}</b><br>Jamaat ${b[1].toFixed(2)}%`,e));
       r.addEventListener('mouseleave',hide);s.appendChild(r);
       s.appendChild(el('text',{x:bx+bw/2,y:y(b[1])-8,'text-anchor':'middle',class:'val'})).textContent=b[1].toFixed(1);
     });
@@ -555,7 +881,8 @@ function c6(){
     const cy=mT+rowH*i,pos=r.adv>=0,bw=Math.abs(x(r.adv)-z);
     const rc=el('rect',{x:pos?z:z-bw,y:cy+3,width:Math.max(bw,.5),height:rowH-7,fill:pos?cv('--jam'):cv('--down')});
     rc.style.cursor='pointer';
-    rc.addEventListener('mousemove',e=>show(`<b>${r.name}</b><br>men ${r.m}% · women ${r.f}%<br>${sgn(r.adv)} points`,e));
+    rc.addEventListener('mousemove',e=>show(`<b>${r.name}</b><br>Jamaat took ${r.m}% of men’s votes `+
+      `and ${r.f}% of women’s<br>${sgn(r.adv)} points`,e));
     rc.addEventListener('mouseleave',hide);s.appendChild(rc);
     s.appendChild(el('text',{x:mL-10,y:cy+rowH/2+4,'text-anchor':'end',class:'cat',style:'font-size:11px'})).textContent=r.name;
     s.appendChild(el('text',{x:pos?x(r.adv)+5:x(r.adv)-5,y:cy+rowH/2+4,'text-anchor':pos?'start':'end',
@@ -576,7 +903,7 @@ function c7(){
     s.appendChild(el('text',{x:mL-14,y:cy+bh/2+5,'text-anchor':'end',class:'cat',
       style:'font-size:13px;font-weight:700'})).textContent=r[0];
     const bg=el('rect',{x:mL,y:cy,width:full,height:bh,fill:'rgba(60,55,50,.13)'});
-    bg.addEventListener('mousemove',e=>show(`<b>${r[0]}</b><br>${r[2]} seats in scope`,e));
+    bg.addEventListener('mousemove',e=>show(`<b>${r[0]}</b><br>${r[2]} covered seats in total`,e));
     bg.addEventListener('mouseleave',hide);s.appendChild(bg);
     const fg=el('rect',{x:mL,y:cy,width:won,height:bh,fill:cv('--jam')});
     fg.style.cursor='pointer';
@@ -603,11 +930,12 @@ function c8(){
     if(i===0||i===2)s.appendChild(el('text',{x:16,y:cy-10,class:'cat',
       style:'font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase'})).textContent=g[0];
     s.appendChild(el('text',{x:mL-12,y:cy+16,'text-anchor':'end',class:'cat',style:'font-size:12.5px'}))
-      .textContent=(g[1]?'Jamaat won':'Jamaat lost')+`  (${c.n} seats)`;
+      .textContent=(g[1]?'Seats Jamaat won':'Seats Jamaat lost')+`  (${c.n})`;
     const col=g[1]?cv('--jam'):'#a8bfae';
     const r=el('rect',{x:mL,y:cy,width:Math.max(x(c.adv)-mL,1),height:bh,fill:col});
     r.style.cursor='pointer';
-    r.addEventListener('mousemove',e=>show(`<b>${g[0]} · ${g[1]?'Jamaat won':'Jamaat lost'}</b><br>+${c.adv} points · ${c.n} seats`,e));
+    r.addEventListener('mousemove',e=>show(`<b>${g[0]}</b><br>${g[1]?'seats Jamaat won':'seats Jamaat lost'}`+
+      `<br>+${c.adv} points, ${c.n} seats`,e));
     r.addEventListener('mouseleave',hide);s.appendChild(r);
     s.appendChild(el('text',{x:x(c.adv)+9,y:cy+17,class:'val',
       style:`font-size:13px;fill:${g[1]?cv('--jam'):cv('--ink2')}`})).textContent='+'+c.adv;
@@ -630,7 +958,8 @@ function c9(){
     const rc=el('rect',{x:mL,y:cy,width:Math.max(x(r.adv)-mL,1),height:bh,
       fill:big?cv('--jam'):(i===1?'#7fae92':'#bcd0c2')});
     rc.style.cursor='pointer';
-    rc.addEventListener('mousemove',e=>show(`<b>${r.grp}</b><br>+${r.adv} points<br>Jamaat ${r.jm}% (men) → ${r.jf}% (women)`,e));
+    rc.addEventListener('mousemove',e=>show(`<b>${r.grp}</b><br>+${r.adv} points on average<br>`+
+      `Jamaat ${r.jm}% at men’s centres, ${r.jf}% at women’s`,e));
     rc.addEventListener('mouseleave',hide);s.appendChild(rc);
     s.appendChild(el('text',{x:x(r.adv)+10,y:cy+bh/2+5,class:'val',
       style:`font-size:15px;fill:${big?cv('--jam'):cv('--ink')}`})).textContent='+'+r.adv;
@@ -641,7 +970,7 @@ function c9(){
 /* ---------- 10. seat leads ---------- */
 function c10(){
   const h=document.getElementById('c10');h.innerHTML='';
-  const P=D.parliament,W=860,H=290,mL=190,mR=30,mT=14;
+  const P=D.parliament,W=860,H=300,mL=210,mR=30,mT=14;
   const s=el('svg',{viewBox:`0 0 ${W} ${H}`}),pw=W-mL-mR;
   const tot=P.official.BNP+P.official.Jamaat+P.official.Other;
   const rows=[
@@ -652,24 +981,24 @@ function c10(){
     ['If only women voted',[['BNP',P.women.BNP,cv('--bnp')],['Jamaat',P.women.Jamaat,cv('--jam')]]],
   ];
   rows.forEach((r,i)=>{
-    const cy=mT+10+i*62,bh=40;let xo=mL;
+    const cy=mT+10+i*64,bh=42;let xo=mL;
     s.appendChild(el('text',{x:mL-14,y:cy+bh/2+5,'text-anchor':'end',class:'cat',
-      style:`font-size:12.5px;font-weight:700;${i===0?'':''}`})).textContent=r[0];
+      style:'font-size:12.5px;font-weight:700'})).textContent=r[0];
     r[1].forEach(b=>{
       const w=b[1]/tot*pw;
       const rc=el('rect',{x:xo,y:cy,width:Math.max(w-2,1),height:bh,fill:b[2]});
       rc.style.cursor='pointer';
-      rc.addEventListener('mousemove',e=>show(`<b>${r[0]}</b><br>${b[0]} ${i===0?'won':'ahead in'} ${b[1]} seats`,e));
+      rc.addEventListener('mousemove',e=>show(`<b>${r[0]}</b><br>${b[0]} ${i===0?'won':'is ahead in'} ${b[1]} seats`,e));
       rc.addEventListener('mouseleave',hide);s.appendChild(rc);
       if(w>34)s.appendChild(el('text',{x:xo+w/2,y:cy+bh/2+6,'text-anchor':'middle',
         style:'fill:#fff;font-size:15px;font-weight:800'})).textContent=b[1];
       xo+=w;
     });
-    if(i===0)s.appendChild(el('line',{x1:mL-6,x2:W-mR,y1:cy+bh+11,y2:cy+bh+11,class:'base'}));
+    if(i===0)s.appendChild(el('line',{x1:mL-6,x2:W-mR,y1:cy+bh+12,y2:cy+bh+12,class:'base'}));
   });
-  s.appendChild(el('text',{x:mL,y:H-6,class:'ax',style:`fill:${cv('--jam')};font-weight:700;font-size:12px`}))
-    .textContent=`Men to women: Jamaat gains ${P.women.Jamaat-P.men.Jamaat} of these 226 seats · `+
-      `${P.flip_to_jamaat} switch from the BNP, ${P.flip_to_bnp} the other way`;
+  s.appendChild(el('text',{x:mL,y:H-8,class:'ax',style:`fill:${cv('--jam')};font-weight:700;font-size:12px`}))
+    .textContent=`Between the bottom two rows Jamaat gains ${P.women.Jamaat-P.men.Jamaat} of these 226 seats: `+
+      `${P.flip_to_jamaat} switch from the BNP, ${P.flip_to_bnp} switch the other way`;
   h.appendChild(s);
 }
 
@@ -677,7 +1006,7 @@ function c10(){
 function c11(){
   const h=document.getElementById('c11');h.innerHTML='';
   const rows=FLIP.slice().sort((a,b)=>(b.jF-b.bF)-(a.jF-a.bF));
-  const rowH=30,mT=8,mB=30,mL=120,mR=130,W=860,lo=25,hi=62;
+  const rowH=30,mT=8,mB=30,mL=120,mR=140,W=860,lo=25,hi=62;
   const H=mT+mB+rows.length*rowH,s=el('svg',{viewBox:`0 0 ${W} ${H}`}),pw=W-mL-mR;
   const x=v=>mL+(v-lo)/(hi-lo)*pw;
   for(let g=30;g<=60;g+=10){s.appendChild(el('line',{x1:x(g),x2:x(g),y1:mT,y2:H-mB,class:'gl'}));
@@ -690,9 +1019,9 @@ function c11(){
     [['BNP',r.bF,cv('--bnp')],['Jamaat',r.jF,cv('--jam')]].forEach(d=>{
       const c=el('circle',{cx:x(d[1]),cy:cy,r:5.5,fill:d[2],stroke:'#fff','stroke-width':2});
       c.style.cursor='pointer';
-      c.addEventListener('mousemove',e=>show(`<b>${r.name}</b><br>women: ${d[0]} ${d[1].toFixed(1)}%<br>`+
-        `<span style="opacity:.8">men: BNP ${r.bM.toFixed(1)} · Jamaat ${r.jM.toFixed(1)}<br>`+
-        `official winner: ${r.official} · coverage ${r.cov.toFixed(0)}%</span>`,e));
+      c.addEventListener('mousemove',e=>show(`<b>${r.name}</b><br>At women’s centres: ${d[0]} ${d[1].toFixed(1)}%<br>`+
+        `<span style="opacity:.8">At men’s centres: BNP ${r.bM.toFixed(1)}%, Jamaat ${r.jM.toFixed(1)}%<br>`+
+        `Official winner: ${r.official}. Coverage ${r.cov.toFixed(0)}% of the electorate.</span>`,e));
       c.addEventListener('mouseleave',hide);s.appendChild(c);
     });
     s.appendChild(el('text',{x:W-mR+14,y:cy+4,class:'ax',
@@ -702,9 +1031,23 @@ function c11(){
   h.appendChild(s);
 }
 
+/* ---------- threshold table ---------- */
+function thrTable(){
+  const b=document.getElementById('thr-body');if(!b)return;b.innerHTML='';
+  D.threshold.forEach(r=>{
+    const tr=document.createElement('tr');
+    if(r.th===10)tr.className='mark';
+    const cells=[(r.th===0?'None (all seats)':'At least '+r.th+'%'),r.seats,sgn(r.jam),
+                 sgn(r.village),sgn(r.town),sgn(r.city),r.city_share.toFixed(0)+'%'];
+    cells.forEach((c,i)=>{const td=document.createElement('td');
+      if(i>0)td.className='n';td.textContent=c;tr.appendChild(td);});
+    b.appendChild(tr);
+  });
+}
+
 /* ---------- copy ---------- */
 function fillText(){
-  const S=D.scope,C=D.coverage,P=D.parliament,T=D.turnout,B=D.belt_seats,g=D.geo;
+  const S=D.scope,C=D.coverage,P=D.parliament,T=D.turnout,B=D.belt_seats;
   const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
   set('s-seats',S.seats); set('s-total',S.seats_total); set('s-drop',S.dropped);
   set('t-seats',S.seats); set('t-centres',C.single_sex.toLocaleString());
@@ -714,7 +1057,7 @@ function fillText(){
   set('s-pairs',D.paired.pairs.toLocaleString()); set('s-paircen',D.paired.pair_centres.toLocaleString());
   set('s-beltm',D.belt.belt.m.toFixed(0)+'%'); set('s-beltf',D.belt.belt.f.toFixed(0)+'%');
   set('s-median',sgn(D.median_gap));
-  set('s-beltpct',B.belt_pct_seats+'%'); set('s-beltwon',B.belt_jamaat+' of '+B.belt_total);
+  set('s-beltpct',B.belt_pct_seats+'%'); set('s-beltwon',B.belt_jamaat+' of the '+B.belt_total);
   set('s-beltshare',B.belt_pct_wins+'%');
   const rw=D.belt_won.find(z=>z.g==='Rest of country'&&z.won),
         rl=D.belt_won.find(z=>z.g==='Rest of country'&&!z.won);
@@ -726,12 +1069,12 @@ function fillText(){
   set('s-bothj',P.both.Jamaat); set('s-offj',P.official.Jamaat);
 }
 
-const drawAll=()=>{c1();c2();c3();c4();c5();c6();c7();c8();c9();c10();c11();};
+const drawAll=()=>{c0();c1();c2();c3();c4();c5();c6();c7();c8();c9();c10();c11();};
 Promise.all([
   fetch('deck.json').then(r=>r.json()),
   fetch('chart_data.json').then(r=>r.json()),
   fetch('winner_data.json').then(r=>r.json())
-]).then(([d,cd,wd])=>{ D=d; DIST=cd.districts; FLIP=wd.flip_seats; fillText(); drawAll(); })
+]).then(([d,cd,wd])=>{ D=d; DIST=cd.districts; FLIP=wd.flip_seats; fillText(); thrTable(); drawAll(); })
  .catch(e=>{document.getElementById('c1').textContent='Could not load data: '+e;});
 addEventListener('resize',()=>{ if(D) drawAll(); });
 </script>
