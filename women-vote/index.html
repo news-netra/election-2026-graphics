@@ -17,16 +17,6 @@
     --tint:#fff6df;
     --sans:"Inter","Helvetica Neue",Arial,sans-serif;
   }
-  @media (prefers-color-scheme:dark){
-    :root{
-      --bg:#101419; --surface:#181e25; --surface2:#232c35; --grid:#2e3944;
-      --ink:#f1f4f7; --ink2:#c1cad3; --muted:#aab5c0;
-      --men:#4fc5cb; --women:#e17faf; --bnp:#82a7f2; --jam:#e8b04a; --other:#b59bdc;
-      --to-jam:#e8b04a; --to-bnp:#82a7f2; --flat:#65717f; --on-flat:#ffffff;
-      --map-n2:#5898d1; --map-n1:#54718b; --map-p1:#625640; --map-p2:#a87926; --map-p3:#e8b04a;
-      --tint:#272116;
-    }
-  }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -115,7 +105,7 @@
     <p class="scope-warning">Observable subset only: this is not a national estimate or projection.</p>
   </header>
 
-  <p class="reading-key"><strong>How to read the charts:</strong> “Women’s gap” means women’s vote share minus men’s vote share, in percentage points (pp). Where shown, whiskers mark 95% uncertainty ranges.</p>
+  <p class="reading-key"><strong>How to read the charts:</strong> “Women’s gap” means women’s vote share minus men’s vote share, in percentage points (pp). In findings 2–4, dots and labels show the pp estimate; grey means the result is not clearly different from zero.</p>
 
   <section class="finding" id="finding-1">
     <div class="step">Finding 1 of 7</div>
@@ -232,7 +222,7 @@
 
     <details>
       <summary>How is uncertainty calculated?</summary>
-      <div class="answer"><p>The headline, place and coalition ranges come from 3,000 bootstrap replications that resample whole constituencies, preserving within-seat clustering. The same-premises chart reports 95% intervals around mean premise-level differences. When a range crosses zero, the chart uses a grey marker and does not claim a difference.</p></div>
+      <div class="answer"><p>The charts show each pp estimate as a single labelled dot. Their underlying 95% ranges are used only to distinguish coloured results from grey, unclear ones; the exact ranges remain in the tooltips. The headline, place and coalition ranges come from 3,000 bootstrap replications that resample whole constituencies, preserving within-seat clustering. The same-premises ranges are calculated around mean premise-level differences.</p></div>
     </details>
 
     <details>
@@ -307,16 +297,13 @@ function zeroAxis(svg,x,lo,hi,y1,y2,leftLabel='women lower',rightLabel='women hi
   text(svg,x(lo),y2+35,leftLabel,'svg-note',{'text-anchor':'start'});
   text(svg,x(hi),y2+35,rightLabel,'svg-note',{'text-anchor':'end'});
 }
-function interval(svg,x,y,d,color,solid=true,label=true){
+function pointEstimate(svg,x,y,d,color,solid=true,label=true){
   const lineColor=solid?color:cv('--flat');
-  svg.append(node('line',{x1:x(d.lo),x2:x(d.hi),y1:y,y2:y,stroke:lineColor,'stroke-width':3,'stroke-linecap':'round'}));
-  svg.append(node('line',{x1:x(d.lo),x2:x(d.lo),y1:y-4,y2:y+4,stroke:lineColor,'stroke-width':1.5}));
-  svg.append(node('line',{x1:x(d.hi),x2:x(d.hi),y1:y-4,y2:y+4,stroke:lineColor,'stroke-width':1.5}));
-  const dot=node('circle',{cx:x(d.mean),cy:y,r:5,fill:lineColor});
+  const dot=node('circle',{cx:x(d.mean),cy:y,r:6,fill:lineColor});
   svg.append(hover(dot,`<b>${fmt(d.mean)} pp</b><br>95% range ${fmt(d.lo)} to ${fmt(d.hi)}`));
   if(label){
     const right=d.mean<0;const xx=x(d.mean)+(right?-9:9);
-    text(svg,xx,y+4,fmt(d.mean),'svg-value',{'text-anchor':right?'end':'start',fill:solid?color:cv('--muted')});
+    text(svg,xx,y+4,`${fmt(d.mean)} pp`,'svg-value',{'text-anchor':right?'end':'start',fill:solid?color:cv('--muted')});
   }
 }
 
@@ -353,9 +340,9 @@ function drawPlaceChart(){
     const base=62+i*68;const jam=D.ci.by_geo[key].Jamaat,bnp=D.ci.by_geo[key].BNP;
     text(svg,8,base+14,label,'svg-place');
     text(svg,L-16,base,'Jamaat','svg-label',{'text-anchor':'end'});
-    interval(svg,x,base,jam,cv('--jam'),jam.sig);
+    pointEstimate(svg,x,base,jam,cv('--jam'),jam.sig);
     text(svg,L-16,base+27,'BNP','svg-label',{'text-anchor':'end'});
-    interval(svg,x,base+27,bnp,cv('--bnp'),bnp.sig);
+    pointEstimate(svg,x,base+27,bnp,cv('--bnp'),bnp.sig);
   });
 }
 
@@ -367,7 +354,7 @@ function drawPremisesChart(){
     const y=66+i*52,m=d.margin,color=m.mean>=0?cv('--to-jam'):cv('--to-bnp');
     text(svg,L-18,y-2,d.label.replace(/ \(.+\)/,''),'svg-place',{'text-anchor':'end'});
     text(svg,L-18,y+14,`${d.n} premises`,'svg-note',{'text-anchor':'end'});
-    interval(svg,x,y,m,color,true);
+    pointEstimate(svg,x,y,m,color,true);
   });
 }
 
@@ -382,7 +369,7 @@ function drawBlocChart(){
     series.forEach(([key,slabel,colorVar],j)=>{
       const y=base+j*24,d=D.bloc3.by_geo[place][key];
       text(svg,L-17,y,slabel,'svg-label',{'text-anchor':'end'});
-      interval(svg,x,y,d,cv(colorVar),d.sig);
+      pointEstimate(svg,x,y,d,cv(colorVar),d.sig);
     });
   });
 }
@@ -530,8 +517,6 @@ Promise.all([
   console.error(error);
 });
 
-const media=matchMedia('(prefers-color-scheme: dark)');
-media.addEventListener?.('change',()=>{if(D&&MAP)render()});
 </script>
 </body>
 </html>
