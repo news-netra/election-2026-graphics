@@ -321,11 +321,13 @@ function drawPartyChart(){
 function drawPlaceChart(){
   const places=[['union','Villages'],['municipality','Small towns'],['city_corporation','Big cities']];
   const w=860,h=290,L=226,R=65,T=36,lo=-2,hi=3.5;
-  const svg=makeSvg('place-chart',w,h,'Women’s vote-share gap by party and place','Jamaat’s share is clearly higher at women-only centres in villages and towns. BNP’s is clearly higher in big cities.');
+  const svg=makeSvg('place-chart',w,h,'Women’s vote-share gap by party and place','Jamaat’s share is clearly higher at women-only centres in villages and towns. The chart covers 5,742 village, 1,501 small-town and 3,225 big-city single-sex centres.');
   const x=v=>L+(w-L-R)*(v-lo)/(hi-lo);zeroAxis(svg,x,lo,hi,T,h-44);
   places.forEach(([key,label],i)=>{
     const base=62+i*68;const jam=D.ci.by_geo[key].Jamaat,bnp=D.ci.by_geo[key].BNP;
-    text(svg,8,base+14,label,'svg-place');
+    const centreCount=D.geo.find(row=>row.t===key).centres;
+    text(svg,8,base+8,label,'svg-place');
+    text(svg,8,base+25,`${centreCount.toLocaleString()} single-sex centres`,'svg-note');
     text(svg,L-16,base,'Jamaat','svg-label',{'text-anchor':'end'});
     pointEstimate(svg,x,base,jam,cv('--jam'),jam.sig);
     text(svg,L-16,base+27,'BNP','svg-label',{'text-anchor':'end'});
