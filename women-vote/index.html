@@ -178,11 +178,11 @@
       <p class="lede">Across the same 226 constituencies, Jamaat leads <strong>44</strong> using men-only centres, <strong>55</strong> using women-only centres and <strong>52</strong> across all single-sex centres. It officially won <strong>47</strong> in the full count.</p>
     </div>
     <figure>
-      <figcaption>Centre-only leads compared with official winners in the same 226 constituencies</figcaption>
-      <div class="sub">Centre rows use only the included single-sex centres; the official row uses the full published result. Every row totals 226.</div>
+      <figcaption>Centre-only leads with Jamaat’s official result marked</figcaption>
+      <div class="sub">Each row totals 226. The dark marker shows Jamaat’s official 47-seat result in the full count.</div>
       <div class="legend"><span><i class="sw" style="background:var(--bnp)"></i>BNP</span><span><i class="sw" style="background:var(--jam)"></i>Jamaat</span><span><i class="sw" style="background:var(--flat)"></i>Other party</span></div>
       <div id="seat-chart"></div>
-      <p class="note"><strong>Read the 44-to-55 difference.</strong> The first three rows are partial-count comparisons, not projections; the official row shows the full-count winners.</p>
+      <p class="note"><strong>Read the 44-to-55 difference.</strong> The three bars are partial-count comparisons, not projections; the marker is the full-count benchmark.</p>
     </figure>
   </section>
 
@@ -276,7 +276,7 @@
 
     <details>
       <summary>How are seat leads and sources defined?</summary>
-      <div class="answer"><p>In the first three chart rows, a seat lead is the largest vote total among the eight symbols recorded in the centre-level source. The official row uses the full published constituency result and all candidates.</p><p>Shares use all valid votes as the denominator. The source files are <code>male_female_centers.csv</code> and <code>election_results_with_geo.csv</code>, derived from published Election Commission centre-level results. Boundary geometry comes from the project's constituency-delimitation file. Presentation outputs are in <code>deck.json</code>, <code>seats_in_scope.csv</code> and <code>seats_map.geojson</code>. This presentation folder contains aggregate outputs, not the raw source files or the full analysis pipeline.</p></div>
+      <div class="answer"><p>In each of the three chart rows, a seat lead is the largest vote total among the eight symbols recorded in the centre-level source. The reference marker uses Jamaat’s 47 full-count wins from the published constituency results.</p><p>Shares use all valid votes as the denominator. The source files are <code>male_female_centers.csv</code> and <code>election_results_with_geo.csv</code>, derived from published Election Commission centre-level results. Boundary geometry comes from the project's constituency-delimitation file. Presentation outputs are in <code>deck.json</code>, <code>seats_in_scope.csv</code> and <code>seats_map.geojson</code>. This presentation folder contains aggregate outputs, not the raw source files or the full analysis pipeline.</p></div>
     </details>
     </div>
     <p class="slide-credit">Bangladesh 2026 election · aggregate polling-centre analysis · last presentation edit: 2 August 2026</p>
@@ -578,13 +578,12 @@ function drawStrengthChart(){
 }
 
 function drawSeatChart(){
-  const rows=[['Men-only centres',D.parliament.all_party.men,false],['Women-only centres',D.parliament.all_party.women,false],['All single-sex centres',D.parliament.all_party.both,false],['Official result · full count',D.parliament.all_party.official,true]];
-  const rowY=[50,100,150,218],w=860,h=286,L=205,R=18,total=D.scope.seats,x=v=>L+(w-L-R)*v/total;
-  const svg=makeSvg('seat-chart',w,h,'Centre-only seat leads compared with official winners','Men-only centres show BNP 170, Jamaat 44 and other parties 12; women-only centres show 158, 55 and 13; all single-sex centres show 163, 52 and 11. Official winners in the same 226 constituencies were BNP 156, Jamaat 47 and other parties 23.');
-  text(svg,w-R,22,'Jamaat: 44 → 55  (+11)','svg-value',{'text-anchor':'end',fill:cv('--jam'),style:'font-size:16px'});
-  rows.forEach(([label,d,isOfficial],i)=>{
+  const rows=[['Men-only centres',D.parliament.all_party.men],['Women-only centres',D.parliament.all_party.women],['All single-sex centres',D.parliament.all_party.both]];
+  const rowY=[50,108,166],w=860,h=215,L=205,R=18,total=D.scope.seats,officialJamaat=D.parliament.all_party.official.Jamaat,x=v=>L+(w-L-R)*v/total;
+  const svg=makeSvg('seat-chart',w,h,'Centre-only seat leads with Jamaat’s official result marked','Men-only centres show BNP 170, Jamaat 44 and other parties 12; women-only centres show 158, 55 and 13; all single-sex centres show 163, 52 and 11. A dark marker on each bar marks Jamaat’s 47 official wins in the same constituencies.');
+  text(svg,w-R,22,`Official Jamaat result · ${officialJamaat} seats`,'svg-value',{'text-anchor':'end',fill:cv('--ink'),style:'font-size:14px'});
+  rows.forEach(([label,d],i)=>{
     const y=rowY[i],other=Object.entries(d).filter(([k])=>!['BNP','Jamaat'].includes(k)).reduce((sum,[,v])=>sum+v,0);
-    if(isOfficial)svg.append(node('rect',{x:0,y:y-8,width:w,height:48,fill:cv('--tint')}));
     const segments=[['BNP',d.BNP,'--bnp'],['Jamaat',d.Jamaat,'--jam'],['Other',other,'--flat']];
     text(svg,L-14,y+23,label,'svg-place',{'text-anchor':'end'});
     let start=0;
@@ -594,6 +593,8 @@ function drawSeatChart(){
       if(x2-x1>28)text(svg,(x1+x2)/2,y+21,String(value),'svg-value',{'text-anchor':'middle',fill:name==='Other'?cv('--on-flat'):cv('--bg')});
       start+=value;
     });
+    const markerX=x(d.BNP+officialJamaat);
+    svg.append(node('rect',{x:markerX-1.5,y:y-5,width:3,height:42,fill:cv('--ink')}));
   });
 }
 
