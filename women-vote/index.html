@@ -9,22 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fff; --surface:#f6f7f9; --surface2:#eaedf1; --grid:#e7ebf0;
-    --ink:#12161d; --ink2:#4e5967; --muted:#596572;
-    --men:#3a6ea5; --women:#b02a52; --bnp:#245d8f; --jam:#c2410c; --other:#7b5ea7;
-    --to-jam:#c2410c; --to-bnp:#2a5f8f; --flat:#5f6d7b;
-    --map-n2:#356b98; --map-n1:#9db8cf; --map-p1:#f6d7c3; --map-p2:#e9945f; --map-p3:#b93b0b;
-    --tint:#fff8f3; --focus:#f5d4bf;
+    --bg:#fcfcfd; --surface:#f3f5f7; --surface2:#e6ebf0; --grid:#dde3e8;
+    --ink:#17212b; --ink2:#465563; --muted:#5d6b78;
+    --men:#007a80; --women:#a63a73; --bnp:#315aa6; --jam:#956000; --other:#6d5597;
+    --to-jam:#956000; --to-bnp:#315aa6; --flat:#5e6b78; --on-flat:#ffffff;
+    --map-n2:#285f9e; --map-n1:#91b1cf; --map-p1:#f2deb6; --map-p2:#d19524; --map-p3:#8e5600;
+    --tint:#fff6df;
     --sans:"Inter","Helvetica Neue",Arial,sans-serif;
   }
   @media (prefers-color-scheme:dark){
     :root{
-      --bg:#0f1319; --surface:#161c25; --surface2:#202833; --grid:#252e39;
-      --ink:#e9eef4; --ink2:#aeb9c6; --muted:#a5b1bf;
-      --men:#72a6d8; --women:#ed7494; --bnp:#69a0d2; --jam:#f0803f; --other:#a992d0;
-      --to-jam:#f0803f; --to-bnp:#69a0d2; --flat:#68788b;
-      --map-n2:#4d85b6; --map-n1:#526c83; --map-p1:#5b463c; --map-p2:#bd6738; --map-p3:#f0803f;
-      --tint:#1d1916; --focus:#4a3021;
+      --bg:#101419; --surface:#181e25; --surface2:#232c35; --grid:#2e3944;
+      --ink:#f1f4f7; --ink2:#c1cad3; --muted:#aab5c0;
+      --men:#4fc5cb; --women:#e17faf; --bnp:#82a7f2; --jam:#e8b04a; --other:#b59bdc;
+      --to-jam:#e8b04a; --to-bnp:#82a7f2; --flat:#65717f; --on-flat:#ffffff;
+      --map-n2:#5898d1; --map-n1:#54718b; --map-p1:#625640; --map-p2:#a87926; --map-p3:#e8b04a;
+      --tint:#272116;
     }
   }
   *{box-sizing:border-box}
@@ -497,7 +497,7 @@ function drawSeatChart(){
     segments.forEach(([name,value,colorVar])=>{
       const x1=x(start),x2=x(start+value),rect=node('rect',{x:x1,y,width:x2-x1,height:32,fill:cv(colorVar)});
       svg.append(hover(rect,`<b>${label}</b><br>${name}: ${value} seats`));
-      if(x2-x1>28)text(svg,(x1+x2)/2,y+21,String(value),'svg-value',{'text-anchor':'middle',fill:name==='Other'?'#fff':cv('--bg')});
+      if(x2-x1>28)text(svg,(x1+x2)/2,y+21,String(value),'svg-value',{'text-anchor':'middle',fill:name==='Other'?cv('--on-flat'):cv('--bg')});
       start+=value;
     });
   });
