@@ -34,7 +34,6 @@
   .scope-item b{display:block;font-size:clamp(24px,2.4vw,32px);line-height:1.05;letter-spacing:-.035em}
   .scope-item span{display:block;margin-top:7px;color:var(--ink2);font-size:13px}
   .scope-warning{margin:14px 0 0;color:var(--muted);font-size:13px}
-  .reading-key{width:min(100%,900px);margin:clamp(20px,3.2vh,32px) 0 0;padding:15px 18px;background:var(--tint);color:var(--ink2);font-size:13.5px}
   .slide-cue{position:absolute;right:max(28px,calc((100vw - 1260px)/2));bottom:calc(var(--nav-height) + 26px);color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
   section.finding{display:grid;grid-template-columns:minmax(290px,.72fr) minmax(0,1.55fr);grid-template-areas:"copy visual";align-items:center;gap:clamp(34px,4vw,66px)}
   #finding-2,#finding-4,#finding-6{background:var(--alt-bg)}
@@ -98,7 +97,7 @@
     figure{padding:16px 18px}
     figcaption{font-size:14px}.sub{margin-bottom:10px}.note{margin-top:9px}
     .hero h1{font-size:clamp(44px,6vw,74px)}
-    .scope-strip{margin-top:22px}.reading-key{margin-top:18px}
+    .scope-strip{margin-top:22px}
   }
   @media (max-width:899px){
     html{scroll-snap-type:y proximity}
@@ -121,7 +120,6 @@
     .scope-item{padding:12px 10px}
     .scope-item b{font-size:22px}
     .scope-item span{font-size:10.5px;line-height:1.35}
-    .reading-key{margin-top:18px;padding:12px 13px;font-size:12.5px}
     figure{margin-left:-6px;margin-right:-6px;padding:17px 12px 14px}
     .sub{font-size:12px}
     [id$="-chart"]{overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
@@ -156,7 +154,6 @@
       <div class="scope-item"><b id="scope-voters">30%</b><span>of the electorate in those seats</span></div>
     </div>
     <p class="scope-warning">Observable subset only: this is not a national estimate or projection.</p>
-    <p class="reading-key"><strong>How to read the charts:</strong> “Women’s gap” means women’s vote share minus men’s vote share, in percentage points (pp). Positive values mean a higher share at women-only centres; negative values mean a lower share.</p>
     <div class="slide-cue" aria-hidden="true">Scroll or use the arrow keys ↓</div>
   </header>
 
