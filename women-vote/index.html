@@ -50,7 +50,6 @@
   .legend{display:flex;gap:17px;flex-wrap:wrap;margin:0 0 10px}
   .legend span{display:inline-flex;align-items:center;gap:7px;color:var(--ink2);font-size:12.5px;font-weight:600}
   .sw{width:12px;height:12px;display:inline-block}
-  .sw.muted{background:var(--flat);clip-path:circle(34%)}
   [id$="-chart"]{min-width:0}
   svg{display:block;width:100%;height:auto;max-height:54svh;overflow:visible}
   #map-chart svg{width:auto;max-width:100%;max-height:min(60svh,500px);margin:0 auto}
@@ -150,14 +149,14 @@
   <header class="slide hero" id="title-slide" data-slide="1" data-slide-label="Overview" aria-roledescription="slide" aria-label="Slide 1 of 8: How Women Voted: Evidence from Bangladesh’s 2026 Polling-Centre Results">
     <div class="kicker">Bangladesh election 2026 · six findings</div>
     <h1>How Women Voted: <span>Evidence from Bangladesh’s 2026 Polling-Centre Results</span></h1>
-    <p class="stand">Results from sex-segregated polling centres show a clear women’s edge for Jamaat in villages and small towns—but not in the big cities.</p>
+    <p class="stand">Results from sex-segregated polling centres show a women’s edge for Jamaat in villages and small towns—but not in the big cities.</p>
     <div class="scope-strip" aria-label="Scope of the analysis">
       <div class="scope-item"><b id="scope-seats">226</b><span>of 297 constituencies</span></div>
       <div class="scope-item"><b id="scope-centres">10,468</b><span>men-only or women-only centres</span></div>
       <div class="scope-item"><b id="scope-voters">30%</b><span>of the electorate in those seats</span></div>
     </div>
     <p class="scope-warning">Observable subset only: this is not a national estimate or projection.</p>
-    <p class="reading-key"><strong>How to read the charts:</strong> “Women’s gap” means women’s vote share minus men’s vote share, in percentage points (pp). In the dot charts, labels show the pp estimate; grey means the result is not clearly different from zero.</p>
+    <p class="reading-key"><strong>How to read the charts:</strong> “Women’s gap” means women’s vote share minus men’s vote share, in percentage points (pp). Positive values mean a higher share at women-only centres; negative values mean a lower share.</p>
     <div class="slide-cue" aria-hidden="true">Scroll or use the arrow keys ↓</div>
   </header>
 
@@ -168,11 +167,10 @@
       <p class="lede"><strong>31.2% at men-only centres; 32.8% at women-only centres.</strong> BNP was effectively flat, while the other sizeable parties were lower among women.</p>
     </div>
     <figure>
-      <figcaption>Among the sizeable parties shown, only Jamaat has a clear women’s advantage</figcaption>
+      <figcaption>Jamaat has the largest positive women’s gap among the sizeable parties shown</figcaption>
       <div class="sub">Share of valid votes at single-sex centres in the 226 covered constituencies</div>
       <div class="legend"><span><i class="sw" style="background:var(--men)"></i>Men</span><span><i class="sw" style="background:var(--women)"></i>Women</span></div>
       <div id="party-chart"></div>
-      <p class="note">Jamaat’s 95% range is +1.1 to +2.2 pp. BNP’s is −0.5 to +0.5 pp.</p>
     </figure>
   </section>
 
@@ -195,12 +193,12 @@
     <div class="slide-copy">
       <div class="step">Finding 3 of 6</div>
       <h2>The women’s edge belongs to villages and small towns</h2>
-      <p class="lede">Jamaat’s share was <strong>2.4 pp higher at women-only centres</strong> in both. In big cities its gap was not clearly different from zero; BNP’s share was <strong>1.2 pp higher</strong>.</p>
+      <p class="lede">Jamaat’s share was <strong>2.4 pp higher at women-only centres</strong> in both. In big cities it was <strong>0.5 pp lower</strong>, while BNP’s share was <strong>1.2 pp higher</strong>.</p>
     </div>
     <figure>
       <figcaption>Women’s gap by party and type of place</figcaption>
-      <div class="sub">Colour marks estimates clear of zero; grey marks are not</div>
-      <div class="legend"><span><i class="sw" style="background:var(--jam)"></i>Jamaat</span><span><i class="sw" style="background:var(--bnp)"></i>BNP</span><span><i class="sw muted"></i>Not clearly different from zero</span></div>
+      <div class="sub">Women-only minus men-only, in percentage points</div>
+      <div class="legend"><span><i class="sw" style="background:var(--jam)"></i>Jamaat</span><span><i class="sw" style="background:var(--bnp)"></i>BNP</span></div>
       <div id="place-chart"></div>
     </figure>
   </section>
@@ -423,13 +421,12 @@ function zeroAxis(svg,x,lo,hi,y1,y2,leftLabel='women lower',rightLabel='women hi
   text(svg,x(lo),y2+35,leftLabel,'svg-note',{'text-anchor':'start'});
   text(svg,x(hi),y2+35,rightLabel,'svg-note',{'text-anchor':'end'});
 }
-function pointEstimate(svg,x,y,d,color,solid=true,label=true){
-  const lineColor=solid?color:cv('--flat');
-  const dot=node('circle',{cx:x(d.mean),cy:y,r:6,fill:lineColor});
-  svg.append(hover(dot,`<b>${fmt(d.mean)} pp</b><br>95% range ${fmt(d.lo)} to ${fmt(d.hi)}`));
+function pointEstimate(svg,x,y,d,color,label=true){
+  const dot=node('circle',{cx:x(d.mean),cy:y,r:6,fill:color});
+  svg.append(hover(dot,`<b>${fmt(d.mean)} pp</b>`));
   if(label){
     const right=d.mean<0;const xx=x(d.mean)+(right?-9:9);
-    text(svg,xx,y+4,`${fmt(d.mean)} pp`,'svg-value',{'text-anchor':right?'end':'start',fill:solid?color:cv('--muted')});
+    text(svg,xx,y+4,`${fmt(d.mean)} pp`,'svg-value',{'text-anchor':right?'end':'start',fill:color});
   }
 }
 
@@ -460,7 +457,7 @@ function drawPartyChart(){
 function drawPlaceChart(){
   const places=[['union','Villages'],['municipality','Small towns'],['city_corporation','Big cities']];
   const w=860,h=290,L=226,R=65,T=36,lo=-2,hi=3.5;
-  const svg=makeSvg('place-chart',w,h,'Women’s vote-share gap by party and place','Jamaat’s share is clearly higher at women-only centres in villages and towns. The chart covers 5,742 village, 1,501 small-town and 3,225 big-city single-sex centres.');
+  const svg=makeSvg('place-chart',w,h,'Women’s vote-share gap by party and place','Villages: Jamaat +2.4 pp, BNP −0.4 pp. Small towns: Jamaat +2.4 pp, BNP −0.8 pp. Big cities: Jamaat −0.5 pp, BNP +1.2 pp.');
   const x=v=>L+(w-L-R)*(v-lo)/(hi-lo);zeroAxis(svg,x,lo,hi,T,h-44);
   places.forEach(([key,label],i)=>{
     const base=62+i*68;const jam=D.ci.by_geo[key].Jamaat,bnp=D.ci.by_geo[key].BNP;
@@ -468,21 +465,21 @@ function drawPlaceChart(){
     text(svg,8,base+8,label,'svg-place');
     text(svg,8,base+25,`${centreCount.toLocaleString()} single-sex centres`,'svg-note');
     text(svg,L-16,base,'Jamaat','svg-label',{'text-anchor':'end'});
-    pointEstimate(svg,x,base,jam,cv('--jam'),jam.sig);
+    pointEstimate(svg,x,base,jam,cv('--jam'));
     text(svg,L-16,base+27,'BNP','svg-label',{'text-anchor':'end'});
-    pointEstimate(svg,x,base+27,bnp,cv('--bnp'),bnp.sig);
+    pointEstimate(svg,x,base+27,bnp,cv('--bnp'));
   });
 }
 
 function drawPremisesChart(){
   const w=860,h=255,L=210,R=70,T=38,lo=-4,hi=5;
-  const svg=makeSvg('premises-chart',w,h,'Same-premises women–men difference in Jamaat’s lead over BNP','The difference favours Jamaat in villages and towns and BNP in big cities.');
+  const svg=makeSvg('premises-chart',w,h,'Same-premises women–men difference in Jamaat’s lead over BNP','Villages: +0.8 pp toward Jamaat. Small towns: +3.1 pp toward Jamaat. Big cities: −3.0 pp toward BNP.');
   const x=v=>L+(w-L-R)*(v-lo)/(hi-lo);zeroAxis(svg,x,lo,hi,T,h-45,'toward BNP','toward Jamaat');
   D.paired.by_geo.forEach((d,i)=>{
     const y=66+i*52,m=d.margin,color=m.mean>=0?cv('--to-jam'):cv('--to-bnp');
     text(svg,L-18,y-2,d.label.replace(/ \(.+\)/,''),'svg-place',{'text-anchor':'end'});
     text(svg,L-18,y+14,`${d.n} premises`,'svg-note',{'text-anchor':'end'});
-    pointEstimate(svg,x,y,m,color,true);
+    pointEstimate(svg,x,y,m,color);
   });
 }
 
