@@ -1,4 +1,4 @@
-# Jamaat, women and the city line
+# How Women Voted: Evidence from Bangladesh’s 2026 Polling-Centre Results
 
 A concise, eight-slide presentation of how men and women voted differently at Bangladesh's sex-segregated polling centres in the 2026 national election: one title slide, six findings and a methodology slide.
 
