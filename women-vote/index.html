@@ -271,7 +271,7 @@
 
     <details>
       <summary>Does the 10% coverage rule change the result?</summary>
-      <div class="answer"><p>The combined number falls as the rule tightens because rural seats drop out first and the sample becomes more urban. Within each type of place, the pattern is stable.</p><div class="table-wrap"><table><thead><tr><th>Minimum seat coverage</th><th>Seats</th><th>All places (pp)</th><th>Villages (pp)</th><th>Small towns (pp)</th><th>Big cities (pp)</th><th>City share of centres</th></tr></thead><tbody id="threshold-body"></tbody></table></div></div>
+      <div class="answer"><p>The combined number falls as the rule tightens because rural seats drop out first and the sample becomes more urban. Within each type of place, the pattern is stable.</p><div class="table-wrap"><table><thead><tr><th>Minimum seat coverage</th><th>Seats</th><th>All places (pp)</th><th>Rest of the country (pp)</th><th>Small towns (pp)</th><th>Big cities (pp)</th><th>City share of centres</th></tr></thead><tbody id="threshold-body"></tbody></table></div></div>
     </details>
 
     <details>
@@ -452,9 +452,9 @@ function drawPartyChart(){
 }
 
 function drawPlaceChart(){
-  const places=[['union','Villages'],['municipality','Small towns'],['city_corporation','Big cities']];
+  const places=[['union','Rest of the country'],['municipality','Small towns'],['city_corporation','Big cities']];
   const w=860,h=290,L=226,R=65,T=36,lo=-2,hi=3.5;
-  const svg=makeSvg('place-chart',w,h,'Women’s vote-share gap by party and place','Villages: Jamaat +2.4 pp, BNP −0.4 pp. Small towns: Jamaat +2.4 pp, BNP −0.8 pp. Big cities: Jamaat −0.5 pp, BNP +1.2 pp.');
+  const svg=makeSvg('place-chart',w,h,'Women’s vote-share gap by party and place','Rest of the country: Jamaat +2.4 pp, BNP −0.4 pp. Small towns: Jamaat +2.4 pp, BNP −0.8 pp. Big cities: Jamaat −0.5 pp, BNP +1.2 pp.');
   const x=v=>L+(w-L-R)*(v-lo)/(hi-lo);zeroAxis(svg,x,lo,hi,T,h-44);
   places.forEach(([key,label],i)=>{
     const base=62+i*68;const jam=D.ci.by_geo[key].Jamaat,bnp=D.ci.by_geo[key].BNP;
@@ -470,11 +470,11 @@ function drawPlaceChart(){
 
 function drawPremisesChart(){
   const w=860,h=255,L=210,R=70,T=38,lo=-4,hi=5;
-  const svg=makeSvg('premises-chart',w,h,'Same-premises women–men difference in Jamaat’s lead over BNP','Villages: +0.8 pp toward Jamaat. Small towns: +3.1 pp toward Jamaat. Big cities: −3.0 pp toward BNP.');
+  const svg=makeSvg('premises-chart',w,h,'Same-premises women–men difference in Jamaat’s lead over BNP','Rest of the country: +0.8 pp toward Jamaat. Small towns: +3.1 pp toward Jamaat. Big cities: −3.0 pp toward BNP.');
   const x=v=>L+(w-L-R)*(v-lo)/(hi-lo);zeroAxis(svg,x,lo,hi,T,h-45,'toward BNP','toward Jamaat');
   D.paired.by_geo.forEach((d,i)=>{
     const y=66+i*52,m=d.margin,color=m.mean>=0?cv('--to-jam'):cv('--to-bnp');
-    text(svg,L-18,y-2,d.label.replace(/ \(.+\)/,''),'svg-place',{'text-anchor':'end'});
+    text(svg,L-18,y-2,d.t==='union'?'Rest of the country':d.label.replace(/ \(.+\)/,''),'svg-place',{'text-anchor':'end'});
     text(svg,L-18,y+14,`${d.n} premises`,'svg-note',{'text-anchor':'end'});
     pointEstimate(svg,x,y,m,color);
   });
