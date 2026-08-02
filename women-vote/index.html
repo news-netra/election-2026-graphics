@@ -14,30 +14,36 @@
     --men:#007a80; --women:#a63a73; --bnp:#315aa6; --jam:#956000;
     --to-jam:#956000; --to-bnp:#315aa6; --flat:#5e6b78; --on-flat:#ffffff;
     --map-n2:#285f9e; --map-n1:#91b1cf; --map-p1:#f2deb6; --map-p2:#d19524; --map-p3:#8e5600;
-    --tint:#fff6df;
+    --tint:#fff6df; --title-bg:#f4efe2; --alt-bg:#f7f8fa;
+    --nav-bg:#17212b; --nav-ink:#ffffff; --nav-muted:#b7c0c8;
+    --nav-height:58px;
     --sans:"Inter","Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  .wrap{width:min(100% - 40px,1020px);margin:0 auto}
-  .hero{padding:84px 0 48px}
+  html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+  body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .deck{width:100%}
+  .slide{position:relative;min-height:100vh;min-height:100svh;padding:clamp(38px,6vh,66px) max(28px,calc((100vw - 1260px)/2)) calc(var(--nav-height) + clamp(42px,7vh,72px));scroll-snap-align:start;scroll-snap-stop:always}
+  .hero{display:flex;flex-direction:column;justify-content:center;background:var(--title-bg)}
   .kicker,.step{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--jam)}
-  h1{max-width:850px;margin:13px 0 20px;font-size:clamp(38px,6.3vw,68px);line-height:1.02;letter-spacing:-.045em}
+  h1{max-width:980px;margin:13px 0 20px;font-size:clamp(44px,6.6vw,86px);line-height:.98;letter-spacing:-.05em}
   h1 span{color:var(--ink2);font-weight:600}
-  .stand{max-width:760px;margin:0;color:var(--ink2);font-size:clamp(18px,2.25vw,22px);line-height:1.48}
-  .scope-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
-  .scope-item{padding:17px 19px;background:var(--surface)}
-  .scope-item b{display:block;font-size:28px;line-height:1.05;letter-spacing:-.035em}
+  .stand{max-width:820px;margin:0;color:var(--ink2);font-size:clamp(18px,2.1vw,24px);line-height:1.45}
+  .scope-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(100%,900px);margin-top:clamp(24px,4vh,38px)}
+  .scope-item{padding:16px 19px;background:rgba(255,255,255,.58)}
+  .scope-item b{display:block;font-size:clamp(24px,2.4vw,32px);line-height:1.05;letter-spacing:-.035em}
   .scope-item span{display:block;margin-top:7px;color:var(--ink2);font-size:13px}
   .scope-warning{margin:14px 0 0;color:var(--muted);font-size:13px}
-  .reading-key{margin:0;padding:17px 20px;background:var(--tint);color:var(--ink2);font-size:14px}
-  section.finding{padding:66px 0 72px}
+  .reading-key{width:min(100%,900px);margin:clamp(20px,3.2vh,32px) 0 0;padding:15px 18px;background:var(--tint);color:var(--ink2);font-size:13.5px}
+  .slide-cue{position:absolute;right:max(28px,calc((100vw - 1260px)/2));bottom:calc(var(--nav-height) + 26px);color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  section.finding{display:grid;grid-template-columns:minmax(290px,.72fr) minmax(0,1.55fr);grid-template-areas:"copy visual";align-items:center;gap:clamp(34px,4vw,66px)}
+  #finding-2,#finding-4,#finding-6{background:var(--alt-bg)}
+  .slide-copy{grid-area:copy;align-self:center}
   .step{margin-bottom:10px;color:var(--muted)}
-  h2{max-width:820px;margin:0 0 12px;font-size:clamp(28px,4vw,43px);line-height:1.12;letter-spacing:-.032em}
-  .lede{max-width:760px;margin:0;color:var(--ink2);font-size:17px;line-height:1.55}
+  h2{max-width:820px;margin:0 0 14px;font-size:clamp(30px,3.2vw,50px);line-height:1.08;letter-spacing:-.038em}
+  .lede{max-width:760px;margin:0;color:var(--ink2);font-size:clamp(15px,1.25vw,18px);line-height:1.52}
   .lede strong{color:var(--ink)}
-  figure{margin:28px 0 0;padding:22px 22px 18px;background:var(--surface)}
+  figure{grid-area:visual;align-self:center;min-width:0;margin:0;padding:clamp(17px,2vw,24px);background:var(--surface)}
   figcaption{font-size:16px;font-weight:800;line-height:1.35}
   .sub{margin:4px 0 15px;color:var(--ink2);font-size:13px;line-height:1.5}
   .note{margin:13px 0 0;color:var(--muted);font-size:12.5px;line-height:1.55}
@@ -45,21 +51,24 @@
   .legend span{display:inline-flex;align-items:center;gap:7px;color:var(--ink2);font-size:12.5px;font-weight:600}
   .sw{width:12px;height:12px;display:inline-block}
   .sw.muted{background:var(--flat);clip-path:circle(34%)}
-  svg{display:block;width:100%;height:auto;overflow:visible}
+  [id$="-chart"]{min-width:0}
+  svg{display:block;width:100%;height:auto;max-height:54svh;overflow:visible}
+  #map-chart svg{width:auto;max-width:100%;max-height:min(60svh,500px);margin:0 auto}
   .svg-label{fill:var(--ink2);font-size:12px;font-weight:600}
   .svg-place{fill:var(--ink);font-size:13px;font-weight:800}
   .svg-value{fill:var(--ink);font-size:12px;font-weight:800;font-variant-numeric:tabular-nums}
   .svg-axis{fill:var(--muted);font-size:11px;font-weight:500;font-variant-numeric:tabular-nums}
   .svg-note{fill:var(--muted);font-size:10.5px;font-weight:500}
-  .method{padding:66px 0 72px}
+  .method{display:flex;flex-direction:column;justify-content:center;background:var(--title-bg)}
   .method h2{margin-bottom:9px}
-  .method-intro{max-width:700px;margin:0 0 24px;color:var(--ink2)}
-  details{background:var(--bg)}
-  summary{position:relative;cursor:pointer;list-style:none;padding:18px 42px 18px 0;font-size:16px;font-weight:750}
+  .method-intro{max-width:700px;margin:0 0 18px;color:var(--ink2)}
+  .method-list{width:min(100%,1050px);max-height:64svh;overflow-y:auto;overscroll-behavior:contain;padding-right:8px}
+  details{margin:0 0 8px;background:rgba(255,255,255,.64)}
+  summary{position:relative;cursor:pointer;list-style:none;padding:14px 48px 14px 18px;font-size:15px;font-weight:750}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";position:absolute;right:4px;top:14px;color:var(--jam);font-size:24px;font-weight:500}
+  summary::after{content:"+";position:absolute;right:18px;top:9px;color:var(--jam);font-size:24px;font-weight:500}
   details[open] summary::after{content:"−"}
-  .answer{max-width:800px;padding:0 0 19px;color:var(--ink2);font-size:14.5px}
+  .answer{max-width:980px;padding:0 18px 18px;color:var(--ink2);font-size:14px}
   .answer p{margin:0 0 10px}.answer p:last-child{margin-bottom:0}
   .table-wrap{overflow-x:auto;margin-top:13px}
   table{width:100%;min-width:570px;font-size:12.5px}
@@ -67,33 +76,78 @@
   th:first-child,td:first-child{text-align:left}
   th{color:var(--muted);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase}
   tr.selected td{background:var(--tint);color:var(--ink);font-weight:700}
-  footer{padding:28px 0 70px;color:var(--muted);font-size:12.5px}
-  footer p{margin:0;max-width:800px}
+  .slide-credit{margin:16px 0 0;color:var(--muted);font-size:12px}
   code{padding:1px 5px;background:var(--surface2);color:var(--ink);font-size:.9em}
-  .tooltip{position:fixed;z-index:20;max-width:270px;padding:9px 11px;pointer-events:none;opacity:0;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.5;transition:opacity .08s}
+  .tooltip{position:fixed;z-index:40;max-width:270px;padding:9px 11px;pointer-events:none;opacity:0;background:var(--ink);color:var(--bg);font-size:12px;line-height:1.5;transition:opacity .08s}
   .loading{padding:40px 0;color:var(--muted);font-size:14px}
+  .deck-nav{position:fixed;z-index:30;left:50%;bottom:max(12px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:10px;width:min(calc(100% - 24px),720px);min-height:var(--nav-height);padding:8px 10px;transform:translateX(-50%);background:var(--nav-bg);color:var(--nav-ink)}
+  .nav-arrow{all:unset;display:grid;flex:0 0 40px;width:40px;height:40px;place-items:center;cursor:pointer;background:rgba(255,255,255,.1);color:var(--nav-ink);font-size:20px;font-weight:700}
+  .nav-arrow[disabled]{cursor:default;opacity:.34}
+  .nav-arrow:focus-visible,.deck-dot:focus-visible,summary:focus-visible{outline:3px solid var(--map-p2);outline-offset:3px}
+  .nav-meta{display:flex;flex:0 0 auto;align-items:baseline;gap:9px;min-width:148px}
+  .nav-count{font-size:12px;font-weight:800;letter-spacing:.08em}
+  .nav-name{color:var(--nav-muted);font-size:12px;white-space:nowrap}
+  .nav-track{display:flex;flex:1;align-items:center;justify-content:center;gap:6px}
+  .deck-dot{display:grid;width:18px;height:36px;place-items:center;transition:width .16s ease}
+  .deck-dot::before{content:"";display:block;width:16px;height:5px;background:rgba(255,255,255,.28);transition:width .16s ease,background-color .16s ease}
+  .deck-dot[aria-current="page"]{width:36px}
+  .deck-dot[aria-current="page"]::before{width:34px;background:var(--map-p2)}
+  .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
+  @media (max-height:820px) and (min-width:900px){
+    .slide{padding-top:30px;padding-bottom:calc(var(--nav-height) + 30px)}
+    h2{font-size:clamp(29px,3vw,44px)}
+    figure{padding:16px 18px}
+    figcaption{font-size:14px}.sub{margin-bottom:10px}.note{margin-top:9px}
+    .hero h1{font-size:clamp(44px,6vw,74px)}
+    .scope-strip{margin-top:22px}.reading-key{margin-top:18px}
+  }
+  @media (max-width:899px){
+    html{scroll-snap-type:y proximity}
+    .slide{min-height:100svh;padding:52px max(22px,calc((100vw - 760px)/2)) calc(var(--nav-height) + 46px)}
+    section.finding{display:block}
+    .slide-copy{margin-bottom:24px}
+    figure{margin:0}
+    svg{max-height:none}
+    #map-chart svg{max-height:none}
+    .slide-cue{display:none}
+    .method{justify-content:flex-start}
+    .method-list{max-height:none;overflow:visible;padding-right:0}
+  }
   @media (max-width:650px){
-    .wrap{width:min(100% - 26px,1020px)}
-    .hero{padding-top:56px}
-    .scope-strip{grid-template-columns:1fr}
-    section.finding,.method{padding:52px 0 58px}
+    .slide{padding-right:13px;padding-left:13px}
+    .hero{padding-right:20px;padding-left:20px}
+    h1{font-size:clamp(38px,11.5vw,48px)}
+    .stand{font-size:17px}
+    .scope-strip{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:20px}
+    .scope-item{padding:12px 10px}
+    .scope-item b{font-size:22px}
+    .scope-item span{font-size:10.5px;line-height:1.35}
+    .reading-key{margin-top:18px;padding:12px 13px;font-size:12.5px}
     figure{margin-left:-6px;margin-right:-6px;padding:17px 12px 14px}
     .sub{font-size:12px}
     [id$="-chart"]{overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin}
     [id$="-chart"] svg{width:680px;max-width:none}
     #map-chart svg{width:760px}
     figure::after{content:"Swipe chart horizontally →";display:block;margin-top:10px;color:var(--muted);font-size:12px;font-weight:600}
+    .method{padding-right:20px;padding-left:20px}
+    .nav-meta{min-width:56px}.nav-name{display:none}
+    .deck-nav{gap:7px}.nav-track{gap:2px}.deck-dot{width:12px}.deck-dot::before{width:10px}.deck-dot[aria-current="page"]{width:24px}.deck-dot[aria-current="page"]::before{width:22px}
   }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.deck-dot{transition:none}}
   @media print{
-    .hero,section.finding,.method{break-after:page;break-inside:avoid;padding:32px 0}
-    details{display:block}details .answer{display:block!important}
+    @page{size:16in 9in;margin:0}
+    html{scroll-snap-type:none}
+    .slide{width:100vw;height:100vh;min-height:0;break-after:page;break-inside:avoid;padding:42px 54px;overflow:hidden}
+    section.finding{display:grid}
+    .method-list{max-height:none;overflow:hidden}
+    .deck-nav{display:none}
     .tooltip{display:none}
   }
 </style>
 </head>
 <body>
-<main class="wrap">
-  <header class="hero">
+<main class="deck" id="deck">
+  <header class="slide hero" id="title-slide" data-slide="1" data-slide-label="Overview" aria-roledescription="slide" aria-label="Slide 1 of 8: Bangladesh election 2026, six findings">
     <div class="kicker">Bangladesh election 2026 · six findings</div>
     <h1>Jamaat’s women-voter advantage <span>stops at the city line</span></h1>
     <p class="stand">Results from sex-segregated polling centres show a clear women’s edge for Jamaat in villages and small towns—but not in the big cities.</p>
@@ -103,14 +157,16 @@
       <div class="scope-item"><b id="scope-voters">30%</b><span>of the electorate in those seats</span></div>
     </div>
     <p class="scope-warning">Observable subset only: this is not a national estimate or projection.</p>
+    <p class="reading-key"><strong>How to read the charts:</strong> “Women’s gap” means women’s vote share minus men’s vote share, in percentage points (pp). In the dot charts, labels show the pp estimate; grey means the result is not clearly different from zero.</p>
+    <div class="slide-cue" aria-hidden="true">Scroll or use the arrow keys ↓</div>
   </header>
 
-  <p class="reading-key"><strong>How to read the charts:</strong> “Women’s gap” means women’s vote share minus men’s vote share, in percentage points (pp). In the dot charts, labels show the pp estimate; grey means the result is not clearly different from zero.</p>
-
-  <section class="finding" id="finding-1">
-    <div class="step">Finding 1 of 6</div>
-    <h2>Jamaat’s share was 1.6 points higher among women</h2>
-    <p class="lede"><strong>31.2% at men-only centres; 32.8% at women-only centres.</strong> BNP was effectively flat, while the other sizeable parties were lower among women.</p>
+  <section class="slide finding" id="finding-1" data-slide="2" data-slide-label="Finding 1" aria-roledescription="slide" aria-label="Slide 2 of 8: Finding 1 of 6">
+    <div class="slide-copy">
+      <div class="step">Finding 1 of 6</div>
+      <h2>Jamaat’s share was 1.6 points higher among women</h2>
+      <p class="lede"><strong>31.2% at men-only centres; 32.8% at women-only centres.</strong> BNP was effectively flat, while the other sizeable parties were lower among women.</p>
+    </div>
     <figure>
       <figcaption>Among the sizeable parties shown, only Jamaat has a clear women’s advantage</figcaption>
       <div class="sub">Share of valid votes at single-sex centres in the 226 covered constituencies</div>
@@ -120,10 +176,12 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-2">
-    <div class="step">Finding 2 of 6</div>
-    <h2>Jamaat leads 11 more seats at women-only centres</h2>
-    <p class="lede">Jamaat leads <strong>44 seats</strong> using men-only centres and <strong>55</strong> using women-only centres. The same centres counted together give 52.</p>
+  <section class="slide finding" id="finding-2" data-slide="3" data-slide-label="Finding 2" aria-roledescription="slide" aria-label="Slide 3 of 8: Finding 2 of 6">
+    <div class="slide-copy">
+      <div class="step">Finding 2 of 6</div>
+      <h2>Jamaat leads 11 more seats at women-only centres</h2>
+      <p class="lede">Jamaat leads <strong>44 seats</strong> using men-only centres and <strong>55</strong> using women-only centres. The same centres counted together give 52.</p>
+    </div>
     <figure>
       <figcaption>Leading recorded party at the same set of single-sex centres</figcaption>
       <div class="sub">All eight recorded symbols compete for the lead; each row totals 226 seats</div>
@@ -133,10 +191,12 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-3">
-    <div class="step">Finding 3 of 6</div>
-    <h2>The women’s edge belongs to villages and small towns</h2>
-    <p class="lede">Jamaat’s share was <strong>2.4 pp higher at women-only centres</strong> in both. In big cities its gap was not clearly different from zero; BNP’s share was <strong>1.2 pp higher</strong>.</p>
+  <section class="slide finding" id="finding-3" data-slide="4" data-slide-label="Finding 3" aria-roledescription="slide" aria-label="Slide 4 of 8: Finding 3 of 6">
+    <div class="slide-copy">
+      <div class="step">Finding 3 of 6</div>
+      <h2>The women’s edge belongs to villages and small towns</h2>
+      <p class="lede">Jamaat’s share was <strong>2.4 pp higher at women-only centres</strong> in both. In big cities its gap was not clearly different from zero; BNP’s share was <strong>1.2 pp higher</strong>.</p>
+    </div>
     <figure>
       <figcaption>Women’s gap by party and type of place</figcaption>
       <div class="sub">Colour marks estimates clear of zero; grey marks are not</div>
@@ -145,10 +205,12 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-4">
-    <div class="step">Finding 4 of 6</div>
-    <h2>The same-premises check reproduces the divide</h2>
-    <p class="lede">At <strong>1,204 matched polling premises</strong>, the women–men difference in Jamaat’s lead over BNP favours Jamaat outside big cities—and BNP inside them.</p>
+  <section class="slide finding" id="finding-4" data-slide="5" data-slide-label="Finding 4" aria-roledescription="slide" aria-label="Slide 5 of 8: Finding 4 of 6">
+    <div class="slide-copy">
+      <div class="step">Finding 4 of 6</div>
+      <h2>The same-premises check reproduces the divide</h2>
+      <p class="lede">At <strong>1,204 matched polling premises</strong>, the women–men difference in Jamaat’s lead over BNP favours Jamaat outside big cities—and BNP inside them.</p>
+    </div>
     <figure>
       <figcaption>Women–men difference in Jamaat’s lead over BNP at the same named premises</figcaption>
       <div class="sub">Women’s side minus men’s side, in percentage points</div>
@@ -158,10 +220,12 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-5">
-    <div class="step">Finding 5 of 6</div>
-    <h2>The south-west is the hotspot</h2>
-    <p class="lede">Across the 29 covered Khulna-division seats, Jamaat had <strong>45.7% at men-only centres and 50.7% at women-only centres</strong>. The gap was 1.0 pp across covered seats elsewhere.</p>
+  <section class="slide finding" id="finding-5" data-slide="6" data-slide-label="Finding 5" aria-roledescription="slide" aria-label="Slide 6 of 8: Finding 5 of 6">
+    <div class="slide-copy">
+      <div class="step">Finding 5 of 6</div>
+      <h2>The south-west is the hotspot</h2>
+      <p class="lede">Across the 29 covered Khulna-division seats, Jamaat had <strong>45.7% at men-only centres and 50.7% at women-only centres</strong>. The gap was 1.0 pp across covered seats elsewhere.</p>
+    </div>
     <figure>
       <figcaption>Where Jamaat’s women’s gap was largest</figcaption>
       <div class="sub">Constituency-level gap at the covered single-sex centres; in-scope Khulna-division seats are outlined</div>
@@ -170,10 +234,12 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-6">
-    <div class="step">Finding 6 of 6</div>
-    <h2>The gap is larger where Jamaat’s 2026 vote share is higher</h2>
-    <p class="lede">It is near zero where Jamaat polled below 10%, and <strong>+4.5 pp</strong> where Jamaat polled above 50% (seat-level <strong>r = 0.40</strong>).</p>
+  <section class="slide finding" id="finding-6" data-slide="7" data-slide-label="Finding 6" aria-roledescription="slide" aria-label="Slide 7 of 8: Finding 6 of 6">
+    <div class="slide-copy">
+      <div class="step">Finding 6 of 6</div>
+      <h2>The gap is larger where Jamaat’s 2026 vote share is higher</h2>
+      <p class="lede">It is near zero where Jamaat polled below 10%, and <strong>+4.5 pp</strong> where Jamaat polled above 50% (seat-level <strong>r = 0.40</strong>).</p>
+    </div>
     <figure>
       <figcaption>Women’s gap by Jamaat’s official vote share</figcaption>
       <div class="sub">Seats grouped by Jamaat’s share in the full official count; sample size below each bar</div>
@@ -182,12 +248,13 @@
     </figure>
   </section>
 
-  <section class="method" id="methodology">
+  <section class="slide method" id="methodology" data-slide="8" data-slide-label="Methodology" aria-roledescription="slide" aria-label="Slide 8 of 8: Methodology">
     <div class="step">Methodology</div>
     <h2>Questions &amp; answers</h2>
     <p class="method-intro">Open a question for the detail behind the charts.</p>
 
-    <details open>
+    <div class="method-list">
+    <details>
       <summary>What does this analysis cover—and is it national?</summary>
       <div class="answer"><p>It uses 10,468 men-only or women-only centres in the 226 of 297 constituencies where those centres hold at least 10% of the electorate. They cover 30.4% of voters in those seats. Mixed centres cannot be split by sex.</p><p><strong>No:</strong> the sample is not nationally representative and none of the seat figures is a projection.</p></div>
     </details>
@@ -208,11 +275,6 @@
     </details>
 
     <details>
-      <summary>How is uncertainty calculated?</summary>
-      <div class="answer"><p>In the dot charts, each pp estimate is a single labelled dot. The underlying 95% ranges determine whether a result is coloured or grey, and their exact values remain in the tooltips. These ranges test stability across different constituency or premises mixes; they are not vote-counting error. The headline and place ranges come from 3,000 bootstrap replications that resample whole constituencies, preserving within-seat clustering. The same-premises ranges are calculated around mean premise-level differences.</p></div>
-    </details>
-
-    <details>
       <summary>Does the 10% coverage rule change the result?</summary>
       <div class="answer"><p>The combined number falls as the rule tightens because rural seats drop out first and the sample becomes more urban. Within each type of place, the pattern is stable.</p><div class="table-wrap"><table><thead><tr><th>Minimum seat coverage</th><th>Seats</th><th>All places (pp)</th><th>Villages (pp)</th><th>Small towns (pp)</th><th>Big cities (pp)</th><th>City share of centres</th></tr></thead><tbody id="threshold-body"></tbody></table></div></div>
     </details>
@@ -221,10 +283,29 @@
       <summary>How are seat leads and sources defined?</summary>
       <div class="answer"><p>A seat lead is the largest vote total among the eight symbols recorded in the source—not an official result.</p><p>Shares use all valid votes as the denominator. The source files are <code>male_female_centers.csv</code> and <code>election_results_with_geo.csv</code>, derived from published Election Commission centre-level results. Boundary geometry comes from the project's constituency-delimitation file. Presentation outputs are in <code>deck.json</code>, <code>seats_in_scope.csv</code> and <code>seats_map.geojson</code>. This presentation folder contains aggregate outputs, not the raw source files or the full analysis pipeline.</p></div>
     </details>
+    </div>
+    <p class="slide-credit">Bangladesh 2026 election · aggregate polling-centre analysis · last presentation edit: 2 August 2026</p>
   </section>
 </main>
 
-<footer><div class="wrap"><p>Bangladesh 2026 election · aggregate polling-centre analysis · last presentation edit: 2 August 2026</p></div></footer>
+<nav class="deck-nav" aria-label="Slide navigation">
+  <button class="nav-arrow" id="previous-slide" type="button" aria-label="Previous slide">←</button>
+  <div class="nav-meta" aria-live="polite">
+    <span class="nav-count" id="slide-count">01 / 08</span>
+    <span class="nav-name" id="slide-name">Overview</span>
+  </div>
+  <div class="nav-track" aria-label="Choose a slide">
+    <a class="deck-dot" href="#title-slide" aria-label="Slide 1: Overview" aria-current="page"><span class="visually-hidden">Overview</span></a>
+    <a class="deck-dot" href="#finding-1" aria-label="Slide 2: Finding 1"><span class="visually-hidden">Finding 1</span></a>
+    <a class="deck-dot" href="#finding-2" aria-label="Slide 3: Finding 2"><span class="visually-hidden">Finding 2</span></a>
+    <a class="deck-dot" href="#finding-3" aria-label="Slide 4: Finding 3"><span class="visually-hidden">Finding 3</span></a>
+    <a class="deck-dot" href="#finding-4" aria-label="Slide 5: Finding 4"><span class="visually-hidden">Finding 4</span></a>
+    <a class="deck-dot" href="#finding-5" aria-label="Slide 6: Finding 5"><span class="visually-hidden">Finding 5</span></a>
+    <a class="deck-dot" href="#finding-6" aria-label="Slide 7: Finding 6"><span class="visually-hidden">Finding 6</span></a>
+    <a class="deck-dot" href="#methodology" aria-label="Slide 8: Methodology"><span class="visually-hidden">Methodology</span></a>
+  </div>
+  <button class="nav-arrow" id="next-slide" type="button" aria-label="Next slide">→</button>
+</nav>
 <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
 
 <script>
@@ -264,6 +345,64 @@ function hover(n,html,accessible=false){
   return n;
 }
 document.addEventListener('pointerdown',event=>{if(!event.target.closest?.('[data-tooltip="true"]'))hideTip()});
+
+const slides=[...document.querySelectorAll('.slide[data-slide]')];
+const slideDots=[...document.querySelectorAll('.deck-dot')];
+const previousSlide=document.getElementById('previous-slide');
+const nextSlide=document.getElementById('next-slide');
+const slideCount=document.getElementById('slide-count');
+const slideName=document.getElementById('slide-name');
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+let activeSlide=0,slideFrame=0;
+
+function updateSlideNav(index){
+  activeSlide=Math.max(0,Math.min(slides.length-1,index));
+  slideDots.forEach((dot,i)=>i===activeSlide?dot.setAttribute('aria-current','page'):dot.removeAttribute('aria-current'));
+  slideCount.textContent=`${String(activeSlide+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+  slideName.textContent=slides[activeSlide].dataset.slideLabel;
+  previousSlide.disabled=activeSlide===0;
+  nextSlide.disabled=activeSlide===slides.length-1;
+}
+function nearestSlide(){
+  const guide=innerHeight*.42;
+  let best=0,bestDistance=Infinity;
+  slides.forEach((slide,i)=>{
+    const rect=slide.getBoundingClientRect();
+    if(rect.top<=guide&&rect.bottom>=guide){best=i;bestDistance=-1;return}
+    if(bestDistance<0)return;
+    const distance=Math.min(Math.abs(rect.top-guide),Math.abs(rect.bottom-guide));
+    if(distance<bestDistance){best=i;bestDistance=distance}
+  });
+  updateSlideNav(best);
+}
+function scheduleSlideUpdate(){
+  if(slideFrame)return;
+  slideFrame=requestAnimationFrame(()=>{slideFrame=0;nearestSlide()});
+}
+function goToSlide(index){
+  const target=slides[Math.max(0,Math.min(slides.length-1,index))];
+  target.scrollIntoView({block:'start',behavior:reducedMotion.matches?'auto':'smooth'});
+}
+previousSlide.addEventListener('click',()=>goToSlide(activeSlide-1));
+nextSlide.addEventListener('click',()=>goToSlide(activeSlide+1));
+slideDots.forEach((dot,i)=>dot.addEventListener('click',event=>{event.preventDefault();goToSlide(i)}));
+addEventListener('scroll',scheduleSlideUpdate,{passive:true});
+addEventListener('resize',scheduleSlideUpdate,{passive:true});
+document.addEventListener('keydown',event=>{
+  if(event.defaultPrevented||event.metaKey||event.ctrlKey||event.altKey)return;
+  if(event.target.closest?.('summary,input,select,textarea,[contenteditable],[data-tooltip="true"]'))return;
+  if(event.target.closest?.('a,button')&&!event.target.closest?.('.deck-nav'))return;
+  let destination=null;
+  if(['ArrowRight','ArrowDown','PageDown'].includes(event.key))destination=activeSlide+1;
+  if(['ArrowLeft','ArrowUp','PageUp'].includes(event.key))destination=activeSlide-1;
+  if(event.key==='Home')destination=0;
+  if(event.key==='End')destination=slides.length-1;
+  if(destination===null)return;
+  event.preventDefault();goToSlide(destination);
+});
+updateSlideNav(0);
+scheduleSlideUpdate();
+
 function makeSvg(hostId,w,h,title,description){
   const host=document.getElementById(hostId);host.replaceChildren();
   const svg=node('svg',{viewBox:`0 0 ${w} ${h}`,role:'img','aria-labelledby':`${hostId}-title ${hostId}-desc`});
