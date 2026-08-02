@@ -1,6 +1,6 @@
 # Jamaat, women and the city line
 
-A concise, chart-led presentation of how men and women voted differently at Bangladesh's sex-segregated polling centres in the 2026 national election.
+A concise, eight-slide presentation of how men and women voted differently at Bangladesh's sex-segregated polling centres in the 2026 national election: one title slide, six findings and a methodology slide.
 
 **[Open the presentation](index.html)** — serve this folder over HTTP; instructions are below.
 
@@ -19,7 +19,9 @@ The analysis covers the 226 of 297 constituencies where single-sex centres hold 
 
 The subset is urban-skewed. Across all 297 constituencies, single-sex centres account for 77% of city-corporation centres, 42% of municipality centres and 18% of union centres. The presentation therefore reports villages, towns and big cities separately and does not treat the combined number as a national estimate.
 
-The page's methodology is a native Q&A accordion covering scope, definitions, the same-premises match, uncertainty, threshold sensitivity, seat leads and sources.
+The methodology slide uses a native Q&A accordion covering scope, definitions, place classifications, the same-premises match, threshold sensitivity, seat leads and sources.
+
+Use the on-screen controls or the arrow keys to move between slides. On phones, the slides stack vertically and wide charts remain horizontally swipeable.
 
 ## Run locally
 
@@ -33,7 +35,7 @@ Then open <http://localhost:8000/index.html>. The page fetches local JSON/GeoJSO
 
 | File | Purpose |
 |---|---|
-| `index.html` | Six-finding web presentation with six inline SVG visuals and methodology Q&A |
+| `index.html` | Eight-slide web presentation with six inline SVG visuals, slide navigation and methodology Q&A |
 | `deck.json` | Headline, place, uncertainty and seat-lead data, plus retained analysis outputs |
 | `seats_map.geojson` | 300 constituency boundaries, with the 226 in-scope seats joined to presentation metrics |
 | `build_map.py` | Rebuilds `seats_map.geojson` from the project boundary file and `seats_in_scope.csv` |
