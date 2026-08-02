@@ -6,9 +6,9 @@ A concise, eight-slide presentation of how men and women voted differently at Ba
 
 ## The six findings
 
-1. **Jamaat's share was 1.6 points higher among women.** It was 31.2% at men-only centres and 32.8% at women-only centres (95% range: +1.1 to +2.2). BNP was effectively flat.
+1. **Jamaat's share was 1.6 points higher among women.** It was 31.2% at men-only centres and 32.8% at women-only centres. BNP was effectively flat.
 2. **Jamaat leads 11 more seats at women-only centres.** It leads 44 of the 226 covered constituencies using men-only centres and 55 using women-only centres. It officially won 47 of those constituencies in the full count; the centre-based comparison is not a projection.
-3. **The edge belongs to villages and small towns.** Jamaat's share was 2.4 points higher at women-only centres in each. Its big-city gap was not clearly different from zero, while BNP's share was 1.2 points higher there.
+3. **The edge belongs to villages and small towns.** Jamaat's share was 2.4 points higher at women-only centres in each. In big cities it was 0.5 points lower, while BNP's share was 1.2 points higher.
 4. **The same-premises check reproduces the divide.** The women–men difference in Jamaat's lead over BNP is +0.8 points in villages, +3.1 in towns and −3.0 in big cities when men-only and women-only records are matched at the same named polling premises.
 5. **The south-west is the hotspot.** Across the 29 covered Khulna-division seats, Jamaat had 45.7% at men-only centres and 50.7% at women-only centres; the gap was 1.0 point across covered seats elsewhere.
 6. **The gap is larger where Jamaat's 2026 vote share is higher.** It is near zero where Jamaat polled below 10% and +4.5 points where Jamaat polled above 50% (r = 0.40 across seats).
@@ -36,7 +36,7 @@ Then open <http://localhost:8000/index.html>. The page fetches local JSON/GeoJSO
 | File | Purpose |
 |---|---|
 | `index.html` | Eight-slide web presentation with six inline SVG visuals, slide navigation and methodology Q&A |
-| `deck.json` | Headline, place, uncertainty and seat-lead data, plus retained analysis outputs |
+| `deck.json` | Headline, place and seat-lead data, plus retained analysis outputs |
 | `seats_map.geojson` | 300 constituency boundaries, with the 226 in-scope seats joined to presentation metrics |
 | `build_map.py` | Rebuilds `seats_map.geojson` from the project boundary file and `seats_in_scope.csv` |
 | `seats_in_scope.csv` | Per-seat coverage and gender-split vote shares for the 226 covered seats |
