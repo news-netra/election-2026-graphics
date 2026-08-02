@@ -122,6 +122,19 @@
 
   <section class="finding" id="finding-2">
     <div class="step">Finding 2 of 6</div>
+    <h2>Jamaat leads 11 more seats at women-only centres</h2>
+    <p class="lede">Jamaat leads <strong>44 seats</strong> using men-only centres and <strong>55</strong> using women-only centres. The same centres counted together give 52.</p>
+    <figure>
+      <figcaption>Leading recorded party at the same set of single-sex centres</figcaption>
+      <div class="sub">All eight recorded symbols compete for the lead; each row totals 226 seats</div>
+      <div class="legend"><span><i class="sw" style="background:var(--bnp)"></i>BNP</span><span><i class="sw" style="background:var(--jam)"></i>Jamaat</span><span><i class="sw" style="background:var(--flat)"></i>Other recorded party</span></div>
+      <div id="seat-chart"></div>
+      <p class="note"><strong>Read the +11 difference, not the levels.</strong> These are 226 partial-seat comparisons, not projected parliaments or official results.</p>
+    </figure>
+  </section>
+
+  <section class="finding" id="finding-3">
+    <div class="step">Finding 3 of 6</div>
     <h2>The women’s edge belongs to villages and small towns</h2>
     <p class="lede">Jamaat’s share was <strong>2.4 pp higher at women-only centres</strong> in both. In big cities its gap was not clearly different from zero; BNP’s share was <strong>1.2 pp higher</strong>.</p>
     <figure>
@@ -132,8 +145,8 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-3">
-    <div class="step">Finding 3 of 6</div>
+  <section class="finding" id="finding-4">
+    <div class="step">Finding 4 of 6</div>
     <h2>The same-premises check reproduces the divide</h2>
     <p class="lede">At <strong>1,204 matched polling premises</strong>, the women–men difference in Jamaat’s lead over BNP favours Jamaat outside big cities—and BNP inside them.</p>
     <figure>
@@ -145,8 +158,8 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-4">
-    <div class="step">Finding 4 of 6</div>
+  <section class="finding" id="finding-5">
+    <div class="step">Finding 5 of 6</div>
     <h2>The south-west is the hotspot</h2>
     <p class="lede">Across the 29 covered Khulna-division seats, Jamaat had <strong>45.7% at men-only centres and 50.7% at women-only centres</strong>. The gap was 1.0 pp across covered seats elsewhere.</p>
     <figure>
@@ -157,8 +170,8 @@
     </figure>
   </section>
 
-  <section class="finding" id="finding-5">
-    <div class="step">Finding 5 of 6</div>
+  <section class="finding" id="finding-6">
+    <div class="step">Finding 6 of 6</div>
     <h2>The gap is larger where Jamaat’s 2026 vote share is higher</h2>
     <p class="lede">It is near zero where Jamaat polled below 10%, and <strong>+4.5 pp</strong> where Jamaat polled above 50% (seat-level <strong>r = 0.40</strong>).</p>
     <figure>
@@ -166,19 +179,6 @@
       <div class="sub">Seats grouped by Jamaat’s share in the full official count; sample size below each bar</div>
       <div id="strength-chart"></div>
       <p class="note">The 10–20% band contains only five seats. The association does not establish what caused the gap.</p>
-    </figure>
-  </section>
-
-  <section class="finding" id="finding-6">
-    <div class="step">Finding 6 of 6</div>
-    <h2>Jamaat leads 11 more seats at women-only centres</h2>
-    <p class="lede">Jamaat leads <strong>44 seats</strong> using men-only centres and <strong>55</strong> using women-only centres. The same centres counted together give 52.</p>
-    <figure>
-      <figcaption>Leading recorded party at the same set of single-sex centres</figcaption>
-      <div class="sub">All eight recorded symbols compete for the lead; each row totals 226 seats</div>
-      <div class="legend"><span><i class="sw" style="background:var(--bnp)"></i>BNP</span><span><i class="sw" style="background:var(--jam)"></i>Jamaat</span><span><i class="sw" style="background:var(--flat)"></i>Other recorded party</span></div>
-      <div id="seat-chart"></div>
-      <p class="note"><strong>Read the +11 difference, not the levels.</strong> These are 226 partial-seat comparisons, not projected parliaments or official results.</p>
     </figure>
   </section>
 
@@ -479,7 +479,7 @@ function fillScopeAndMethod(){
 }
 
 function render(){
-  fillScopeAndMethod();drawPartyChart();drawPlaceChart();drawPremisesChart();drawMap();drawStrengthChart();drawSeatChart();
+  fillScopeAndMethod();drawPartyChart();drawSeatChart();drawPlaceChart();drawPremisesChart();drawMap();drawStrengthChart();
 }
 
 Promise.all([
